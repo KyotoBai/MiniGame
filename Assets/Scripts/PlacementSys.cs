@@ -34,6 +34,8 @@ public class PlacementSys : MonoBehaviour
     private Vector3 levelStep;
     private int currentLevel = 0;
 
+    private Renderer previewRender;
+
     private bool canPlace = true;
 
     public void StartPlacement(int ID)
@@ -62,6 +64,7 @@ public class PlacementSys : MonoBehaviour
         StopPlacement();
         Vector3 cellSize = grid.cellSize;
         levelStep = new Vector3(0, cellSize.x, 0);
+        previewRender = cellIndicator.GetComponentInChildren<Renderer>();
     }
 
     private void StopPlacement()
@@ -109,13 +112,14 @@ public class PlacementSys : MonoBehaviour
         Vector3Int gridPos = grid.WorldToCell(mousePos);
         mouseIndicator.transform.position = mousePos;
         Vector3 cellCenterInWorld = grid.GetCellCenterWorld(gridPos) + currentLevel * levelStep - new Vector3(0, grid.cellSize.y / 2, 0);
-        cellIndicator.transform.position = grid.WorldToCell(mousePos) + currentLevel * levelStep;
+        cellIndicator.transform.position = grid.WorldToCell(mousePos);// + currentLevel * levelStep;
         placementHint.transform.position = cellCenterInWorld;
-
 
         Vector3 colliderCenter = grid.cellSize * 0.5f;
         bool isCellOccupied = Physics.CheckBox(cellCenterInWorld, colliderCenter, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
         canPlace = !isCellOccupied;
+
+        previewRender.material.color = canPlace ? Color.white : Color.red;
 
         if (Input.GetKeyDown(rotationKeyPress))
         {
