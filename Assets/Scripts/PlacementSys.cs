@@ -108,9 +108,14 @@ public class PlacementSys : MonoBehaviour
         Vector3 mousePos = inputManager.GetSelectedMapPosition();
         Vector3Int gridPos = grid.WorldToCell(mousePos);
         mouseIndicator.transform.position = mousePos;
+<<<<<<< Updated upstream
         Vector3 cellCenterInWorld = grid.GetCellCenterWorld(gridPos) + currentLevel * levelStep - new Vector3(0, grid.cellSize.y / 2, 0);
         cellIndicator.transform.position = grid.WorldToCell(mousePos) + currentLevel * levelStep;
         placementHint.transform.position = cellCenterInWorld;
+=======
+        cellIndicator.transform.position = grid.CellToWorld(gridPos); //+currentLevel * levelStep
+        placementHintParent.transform.position = grid.CellToWorld(gridPos) + currentLevel * levelStep;
+>>>>>>> Stashed changes
 
         Vector3 colliderCenter = grid.cellSize * 0.5f;
         bool isCellOccupied = Physics.CheckBox(cellCenterInWorld, colliderCenter, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
