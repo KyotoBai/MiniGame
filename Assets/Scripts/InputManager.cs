@@ -14,15 +14,14 @@ public class InputManager : MonoBehaviour
 
     public Vector3 GetSelectedMapPosition()
     {
-        Debug.Log("start!");
         Vector3 mousePos = Input.mousePosition;
-        Debug.Log("mouse Pos: " + mousePos);
 
         mousePos.z = sceneCam.nearClipPlane;
 
+        //check if we pointing on plain
         Ray ray = sceneCam.ScreenPointToRay(mousePos);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, placementLayermask))
+        if (Physics.Raycast(ray, out hit, 300, placementLayermask))
         {
             lastPos = hit.point;
         }

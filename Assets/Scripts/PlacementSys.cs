@@ -9,10 +9,9 @@ public class PlacementSys : MonoBehaviour
     [SerializeField]
     private GameObject mouseIndicator;
 
-    private void Updata()
+    private void Update()
     {
         Vector3 mousePos = inputManager.GetSelectedMapPosition();
-        Debug.Log("mouse Pos: " + mousePos);
         mouseIndicator.transform.position = mousePos;
     }
 }
