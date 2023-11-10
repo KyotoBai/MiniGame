@@ -30,7 +30,6 @@ public class PlacementSys : MonoBehaviour
     public string destroyKeyPress;
 
     private GameObject placementHint;
-    private GameObject placementHintParent;
 
     private Vector3 levelStep;
     private int currentLevel = 0;
@@ -51,8 +50,6 @@ public class PlacementSys : MonoBehaviour
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
         placementHint = Instantiate(database.objData[selectObjIndex].Prefab);
-        placementHintParent = new GameObject("Placement Hint Parent");
-        placementHint.transform.parent = placementHintParent.transform;
     }
 
     private void RotateHint(Vector3 center, int degree)
@@ -76,8 +73,6 @@ public class PlacementSys : MonoBehaviour
         inputManager.OnExit -= StopPlacement;
         if (placementHint != null) Destroy(placementHint);
         placementHint = null;
-        if (placementHintParent != null) Destroy(placementHintParent);
-        placementHintParent = null;
         currentLevel = 0;
     }
 
@@ -99,7 +94,7 @@ public class PlacementSys : MonoBehaviour
         newGameObj.transform.rotation = placementHint.transform.rotation;
         newGameObj.layer = LayerMask.NameToLayer("PlacementObject");
         BoxCollider newObjectCollider = newGameObj.GetComponent<BoxCollider>();
-        newObjectCollider.center = new Vector3(grid.cellSize.x * 0.5f, grid.cellSize.y * 0.5f, grid.cellSize.z * 0.5f);
+        newObjectCollider.center = new Vector3(0, 0, 0);
         newObjectCollider.size = 0.9f * grid.cellSize;
     }
 
@@ -113,18 +108,17 @@ public class PlacementSys : MonoBehaviour
         Vector3 mousePos = inputManager.GetSelectedMapPosition();
         Vector3Int gridPos = grid.WorldToCell(mousePos);
         mouseIndicator.transform.position = mousePos;
-        cellIndicator.transform.position = grid.CellToWorld(gridPos) + currentLevel * levelStep;
-        placementHintParent.transform.position = grid.CellToWorld(gridPos) + currentLevel * levelStep;
+        Vector3 cellCenterInWorld = grid.GetCellCenterWorld(gridPos) + +currentLevel * levelStep;
+        cellIndicator.transform.position = grid.WorldToCell(mousePos) + currentLevel * levelStep;
+        placementHint.transform.position = cellCenterInWorld;
 
-        Vector3Int cellPosition = grid.WorldToCell(mousePos);
-        Vector3 cellCenterInWorld = grid.CellToWorld(cellPosition) + (grid.cellSize * 0.5f) + new Vector3(0, currentLevel * grid.cellSize.y, 0);
         Vector3 colliderCenter = grid.cellSize * 0.5f;
         bool isCellOccupied = Physics.CheckBox(cellCenterInWorld, colliderCenter, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
         canPlace = !isCellOccupied;
 
         if (Input.GetKeyDown(rotationKeyPress))
         {
-            RotateHint(grid.GetCellCenterWorld(gridPos), 90);
+            RotateHint(cellCenterInWorld, 90);
         }
         if (Input.GetKeyDown(levelUpKeyPress))
         {
