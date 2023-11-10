@@ -26,12 +26,16 @@ public class PlacementSys : MonoBehaviour
     public string levelUpKeyPress;
     [SerializeField]
     public string levelDownKeyPress;
+    [SerializeField]
+    public string destroyKeyPress;
 
     private GameObject placementHint;
     private GameObject placementHintParent;
 
     private Vector3 levelStep;
     private int currentLevel = 0;
+
+    private bool canPlace = true;
 
     public void StartPlacement(int ID)
     {
@@ -85,11 +89,7 @@ public class PlacementSys : MonoBehaviour
         }
         Vector3 mousePos = inputManager.GetSelectedMapPosition();
         Vector3Int gridPos = grid.WorldToCell(mousePos);
-        Vector3Int cellPosition = grid.WorldToCell(mousePos);
-        Vector3 cellCenterInWorld = grid.CellToWorld(cellPosition) + (grid.cellSize * 0.5f) + new Vector3(0, currentLevel * grid.cellSize.y, 0);
-        Vector3 colliderCenter = grid.cellSize * 0.5f;
-        bool isCellOccupied = Physics.CheckBox(cellCenterInWorld, colliderCenter, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
-        if (isCellOccupied)
+        if (!canPlace)
         {
             return;
         }
@@ -115,6 +115,13 @@ public class PlacementSys : MonoBehaviour
         mouseIndicator.transform.position = mousePos;
         cellIndicator.transform.position = grid.CellToWorld(gridPos) + currentLevel * levelStep;
         placementHintParent.transform.position = grid.CellToWorld(gridPos) + currentLevel * levelStep;
+
+        Vector3Int cellPosition = grid.WorldToCell(mousePos);
+        Vector3 cellCenterInWorld = grid.CellToWorld(cellPosition) + (grid.cellSize * 0.5f) + new Vector3(0, currentLevel * grid.cellSize.y, 0);
+        Vector3 colliderCenter = grid.cellSize * 0.5f;
+        bool isCellOccupied = Physics.CheckBox(cellCenterInWorld, colliderCenter, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
+        canPlace = !isCellOccupied;
+
         if (Input.GetKeyDown(rotationKeyPress))
         {
             RotateHint(grid.GetCellCenterWorld(gridPos), 90);
@@ -128,6 +135,18 @@ public class PlacementSys : MonoBehaviour
             if (currentLevel > 0)
             {
                 currentLevel -= 1;
+            }
+        }
+        if (Input.GetKeyDown(destroyKeyPress))
+        {
+            if (!canPlace)
+            {
+                Vector3 halfExtents = grid.cellSize * 0.5f;
+                Collider[] hitColliders = Physics.OverlapBox(cellCenterInWorld, halfExtents, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
+                foreach (Collider hitCollider in hitColliders)
+                {
+                    Destroy(hitCollider.gameObject); // Destroys the game objects that are in the occupied cell.
+                }
             }
         }
     }

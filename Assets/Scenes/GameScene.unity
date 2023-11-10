@@ -1361,4 +1361,7 @@ MonoBehaviour:
   grid: {fileID: 2004990183}
   database: {fileID: 11400000, guid: 47a5caf752f26e84db9b16819e7555eb, type: 2}
   gridVisualization: {fileID: 1927886830}
-  rotationKeyPress: R
+  rotationKeyPress: r
+  levelUpKeyPress: w
+  levelDownKeyPress: s
+  destroyKeyPress: x
