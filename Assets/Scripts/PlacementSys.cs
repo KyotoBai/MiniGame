@@ -9,7 +9,7 @@ public class PlacementSys : MonoBehaviour
     [SerializeField]
     private InputManager inputManager;
     [SerializeField]
-    private GameObject mouseIndicator, cellIndicator;
+    private GameObject cellIndicator;
     [SerializeField]
     private Grid grid;
 
@@ -34,7 +34,11 @@ public class PlacementSys : MonoBehaviour
     private Vector3 levelStep;
     private int currentLevel = 0;
 
-    private Renderer previewRender;
+    private Renderer[] previewRenderCellIndicator;
+
+    [SerializeField]
+    private Material previewRenderMaterial;
+    private Material previewMaterialInstance;
 
     private bool canPlace = true;
 
@@ -52,6 +56,18 @@ public class PlacementSys : MonoBehaviour
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
         placementHint = Instantiate(database.objData[selectObjIndex].Prefab);
+        previewMaterialInstance = new Material(previewRenderMaterial);
+
+        Renderer[] renderers = placementHint.GetComponentsInChildren<Renderer>();
+        foreach (Renderer renderer in renderers)
+        {
+            Material[] materials = renderer.materials;
+            for (int i = 0; i < materials.Length; i++)
+            {
+                materials[i] = previewMaterialInstance;
+            }
+            renderer.materials = materials;
+        }
     }
 
     private void RotateHint(Vector3 center, int degree)
@@ -64,7 +80,7 @@ public class PlacementSys : MonoBehaviour
         StopPlacement();
         Vector3 cellSize = grid.cellSize;
         levelStep = new Vector3(0, cellSize.x, 0);
-        previewRender = cellIndicator.GetComponentInChildren<Renderer>();
+        previewRenderCellIndicator = cellIndicator.GetComponentsInChildren<Renderer>();
     }
 
     private void StopPlacement()
@@ -110,7 +126,6 @@ public class PlacementSys : MonoBehaviour
 
         Vector3 mousePos = inputManager.GetSelectedMapPosition();
         Vector3Int gridPos = grid.WorldToCell(mousePos);
-        mouseIndicator.transform.position = mousePos;
         Vector3 cellCenterInWorld = grid.GetCellCenterWorld(gridPos) + currentLevel * levelStep - new Vector3(0, grid.cellSize.y / 2, 0);
         cellIndicator.transform.position = grid.WorldToCell(mousePos);// + currentLevel * levelStep;
         placementHint.transform.position = cellCenterInWorld;
@@ -119,7 +134,16 @@ public class PlacementSys : MonoBehaviour
         bool isCellOccupied = Physics.CheckBox(cellCenterInWorld, colliderCenter, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
         canPlace = !isCellOccupied;
 
-        previewRender.material.color = canPlace ? Color.white : Color.red;
+        foreach (Renderer renderer in previewRenderCellIndicator)
+        {
+            Material[] materials = renderer.materials;
+            for (int i = 0; i < materials.Length; i++)
+            {
+                materials[i].color = canPlace ? Color.white : Color.red;
+            }
+            renderer.materials = materials;
+        }
+        
 
         if (Input.GetKeyDown(rotationKeyPress))
         {
