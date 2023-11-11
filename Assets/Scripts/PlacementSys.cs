@@ -112,7 +112,10 @@ public class PlacementSys : MonoBehaviour
         {
             return;
         }
-        if (!economyManager.SpendCoins(database.objData[selectObjIndex].Price))
+        if (database.objData[selectObjIndex].Inventory > 0)
+        {
+            database.objData[selectObjIndex].Inventory -= 1;
+        } else if (!economyManager.SpendCoins(database.objData[selectObjIndex].Price))
         {
             return;
         }

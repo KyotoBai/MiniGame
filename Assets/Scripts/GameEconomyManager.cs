@@ -37,7 +37,7 @@ public class GameEconomyManager : MonoBehaviour
         }
 
         coinsCount += amount;
-        Debug.Log("Coins added. New total: " + coinsCount);
+        // Debug.Log("Coins added. New total: " + coinsCount);
 
         // Update UI and other game elements as necessary
     }
@@ -52,7 +52,7 @@ public class GameEconomyManager : MonoBehaviour
         }
 
         coinsCount -= amount;
-        Debug.Log("Spent coin: " + amount + ", Remaining: " + coinsCount);
+        // Debug.Log("Spent coin: " + amount + ", Remaining: " + coinsCount);
 
         // Update UI and other game elements as necessary
         return true;
