@@ -129,7 +129,7 @@ public class PlacementSys : MonoBehaviour
         Vector3 mousePos = inputManager.GetSelectedMapPosition();
         Vector3Int gridPos = grid.WorldToCell(mousePos);
         Vector3 cellCenterInWorld = grid.GetCellCenterWorld(gridPos) + currentLevel * levelStep - new Vector3(0, grid.cellSize.y / 2, 0);
-        cellIndicator.transform.position = grid.WorldToCell(mousePos);// + currentLevel * levelStep;
+        cellIndicator.transform.position = cellCenterInWorld;//+ currentLevel * levelStep;
         placementHint.transform.position = cellCenterInWorld;
 
         Vector3 colliderCenter = grid.cellSize * 0.5f;
