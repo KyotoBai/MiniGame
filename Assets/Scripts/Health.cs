@@ -10,6 +10,13 @@ public class Health : MonoBehaviour
     // This is private and won't be shown in the inspector.
     private int currentHitPoints;
 
+    // Declare a delegate type for the destruction event
+    public delegate void OnDestroyed();
+
+    // Declare an event of the delegate type
+    public event OnDestroyed onDestroyedEvent;
+
+
     // Read-only property to access current hit points from other scripts
     public int CurrentHitPoints
     {
