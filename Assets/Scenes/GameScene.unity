@@ -1691,8 +1691,8 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: 47a5caf752f26e84db9b16819e7555eb, type: 2}
   gridVisualization: {fileID: 1927886830}
   rotationKeyPress: r
-  levelUpKeyPress: w
-  levelDownKeyPress: s
+  levelUpKeyPress: i
+  levelDownKeyPress: k
   destroyKeyPress: x
   damageKeyPress: z
   previewRenderMaterial: {fileID: 2100000, guid: eed4d14a51763c44fba87f63990ce42b, type: 2}
