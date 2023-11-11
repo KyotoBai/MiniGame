@@ -44,6 +44,9 @@ public class PlacementSys : MonoBehaviour
 
     private bool canPlace = true;
 
+    [SerializeField]
+    private GameEconomyManager economyManager;
+
     public void StartPlacement(int ID)
     {
         StopPlacement();
@@ -109,6 +112,10 @@ public class PlacementSys : MonoBehaviour
         {
             return;
         }
+        if (!economyManager.SpendCoins(database.objData[selectObjIndex].Price))
+        {
+            return;
+        }
 
         GameObject newGameObj = Instantiate(database.objData[selectObjIndex].Prefab);
         newGameObj.transform.position = placementHint.transform.position;
@@ -117,6 +124,14 @@ public class PlacementSys : MonoBehaviour
         BoxCollider newObjectCollider = newGameObj.GetComponent<BoxCollider>();
         newObjectCollider.center = new Vector3(0, 0, 0);
         newObjectCollider.size = 0.9f * grid.cellSize;
+        Health health = newGameObj.GetComponent<Health>();
+        if (health == null)
+        {
+            health = newGameObj.AddComponent<Health>();
+        }
+        health.maxHitPoints = database.objData[selectObjIndex].HP;
+        health.currentHitPoints = database.objData[selectObjIndex].HP;
+
     }
 
     private void Update()
@@ -170,6 +185,7 @@ public class PlacementSys : MonoBehaviour
                 foreach (Collider hitCollider in hitColliders)
                 {
                     Destroy(hitCollider.gameObject); // Destroys the game objects that are in the occupied cell.
+                    economyManager.AddCoins(1);
                 }
             }
         }

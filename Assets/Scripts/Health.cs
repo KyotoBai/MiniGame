@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHitPoints = 10;
-    private int currentHitPoints;
+    [SerializeField] public int maxHitPoints = 10;
+    public int currentHitPoints;
 
     // Updated event name for clarity
     public delegate void OnHealthDepleted();
