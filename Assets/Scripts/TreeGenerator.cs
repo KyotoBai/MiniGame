@@ -15,6 +15,8 @@ public class TreeGenerator : MonoBehaviour
     public float terrainWidth = 100f;
     public float terrainHeight = 100f;
 
+    public float collisionCheckRadius = 1.0f;
+
     void Start()
     {
         GenerateTrees();
@@ -22,29 +24,37 @@ public class TreeGenerator : MonoBehaviour
 
     void GenerateTrees()
     {
-        for (int i = 0; i < numberOfTrees; i++)
+        int treesPlaced = 0;
+        while(treesPlaced < numberOfTrees)
         {
             // Random position on the terrain
             float xPos = Random.Range(-(terrainWidth/2), terrainWidth/2);
             float zPos = Random.Range(-(terrainHeight / 2), terrainHeight/2);
             Vector3 treePosition = new Vector3(xPos, 0, zPos); // Assuming terrain is at y = 0
 
-            // Random rotation
-            Quaternion treeRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+            Collider[] hitColliders = Physics.OverlapSphere(treePosition, collisionCheckRadius, LayerMask.GetMask("PlacementObject"));
 
-            // Random scale
-            float scale = Random.Range(treeScaleRange.x, treeScaleRange.y);
-            float height = Random.Range(treeHeightRange.x, treeHeightRange.y);
-            Vector3 treeScale = new Vector3(scale, height, scale);
+            if (hitColliders.Length == 0) // No collision, safe to place tree
+            {
+                // Random rotation
+                Quaternion treeRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
 
-            // Randomly select a tree prefab
-            GameObject selectedTreePrefab = treePrefabs[Random.Range(0, treePrefabs.Length)];
+                // Random scale
+                float scale = Random.Range(treeScaleRange.x, treeScaleRange.y);
+                float height = Random.Range(treeHeightRange.x, treeHeightRange.y);
+                Vector3 treeScale = new Vector3(scale, height, scale);
 
-            // Instantiate the tree
-            GameObject newTree = Instantiate(selectedTreePrefab, treePosition, treeRotation);
-            newTree.layer = LayerMask.NameToLayer("PlacementObject");
-            newTree.AddComponent<CapsuleCollider>();
-            newTree.transform.localScale = treeScale;
+                // Randomly select a tree prefab
+                GameObject selectedTreePrefab = treePrefabs[Random.Range(0, treePrefabs.Length)];
+
+                // Instantiate the tree
+                GameObject newTree = Instantiate(selectedTreePrefab, treePosition, treeRotation);
+                newTree.layer = LayerMask.NameToLayer("PlacementObject");
+                newTree.AddComponent<CapsuleCollider>();
+                newTree.transform.localScale = treeScale;
+
+                treesPlaced++;
+            }
         }
     }
 }
