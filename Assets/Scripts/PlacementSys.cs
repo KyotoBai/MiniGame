@@ -146,7 +146,6 @@ public class PlacementSys : MonoBehaviour
             renderer.materials = materials;
         }
         
-
         if (Input.GetKeyDown(rotationKeyPress))
         {
             RotateHint(cellCenterInWorld, 90);
@@ -162,7 +161,7 @@ public class PlacementSys : MonoBehaviour
                 currentLevel -= 1;
             }
         }
-        if (Input.GetKeyDown(destroyKeyPress))
+        if (Input.GetKey(destroyKeyPress))
         {
             if (!canPlace)
             {
