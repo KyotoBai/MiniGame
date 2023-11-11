@@ -28,6 +28,8 @@ public class PlacementSys : MonoBehaviour
     public string levelDownKeyPress;
     [SerializeField]
     public string destroyKeyPress;
+    [SerializeField]
+    public string damageKeyPress;
 
     private GameObject placementHint;
 
@@ -169,6 +171,29 @@ public class PlacementSys : MonoBehaviour
                 foreach (Collider hitCollider in hitColliders)
                 {
                     Destroy(hitCollider.gameObject); // Destroys the game objects that are in the occupied cell.
+                }
+            }
+        }
+        // Test
+        if (Input.GetKeyDown(damageKeyPress))
+        {
+            if (!canPlace)
+            {
+                Vector3 halfExtents = grid.cellSize * 0.5f;
+                Collider[] hitColliders = Physics.OverlapBox(cellCenterInWorld, halfExtents, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
+                foreach (Collider hitCollider in hitColliders)
+                {
+                    GameObject target = hitCollider.gameObject;
+                    Health healthComponent = target.GetComponent<Health>();
+                    if (healthComponent != null) // Check if the Health component is found
+                    {
+                        healthComponent.TakeDamage(1);
+                    }
+                    else
+                    {
+                        Debug.LogError("The target does not have a Health component.");
+                    }
+
                 }
             }
         }

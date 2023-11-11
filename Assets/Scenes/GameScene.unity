@@ -1564,4 +1564,5 @@ MonoBehaviour:
   levelUpKeyPress: w
   levelDownKeyPress: s
   destroyKeyPress: x
+  damageKeyPress: z
   previewRenderMaterial: {fileID: 2100000, guid: eed4d14a51763c44fba87f63990ce42b, type: 2}
