@@ -10,6 +10,11 @@ public abstract class BasePanel
     // UI info
     public UIType UIType { get; private set; }
 
+    public BasePanel(UIType uIType)
+    {
+        UIType = uIType;
+    }
+
     // Only once
     public virtual void OnEnter() { }
     // pause
