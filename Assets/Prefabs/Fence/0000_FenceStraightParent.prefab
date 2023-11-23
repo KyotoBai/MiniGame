@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5303782744720502963}
   - component: {fileID: 550708877679073524}
   m_Layer: 0
-  m_Name: FenceStraightParent
+  m_Name: 0000_FenceStraightParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,6 +9,11 @@ public class ObjDBScriptableObj : ScriptableObject
     public List<ObjectData> objData;
 }
 
+/// <summary>
+/// Fence obj start with 00 + obj number xx
+/// For example 0001
+/// 
+/// </summary>
 [Serializable]
 public class ObjectData
 {

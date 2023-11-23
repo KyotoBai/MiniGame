@@ -12,6 +12,8 @@ public class TreeGenerator : MonoBehaviour
     private Vector2 treeScaleRange = new Vector2(0.8f, 1.2f); // Min and Max scale
     [SerializeField]
     private Vector2 treeHeightRange = new Vector2(0.5f, 1.5f); // Min and Max height
+
+    public Transform groundTransform;
     public float terrainWidth = 100f;
     public float terrainHeight = 100f;
 
@@ -49,6 +51,9 @@ public class TreeGenerator : MonoBehaviour
 
                 // Instantiate the tree
                 GameObject newTree = Instantiate(selectedTreePrefab, treePosition, treeRotation);
+
+                newTree.transform.SetParent(groundTransform, true);
+
                 newTree.layer = LayerMask.NameToLayer("PlacementObject");
                 newTree.AddComponent<CapsuleCollider>();
                 newTree.transform.localScale = treeScale;
