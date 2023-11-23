@@ -41,3 +41,10 @@ MonoBehaviour:
     <Price>k__BackingField: 1
     <Inventory>k__BackingField: 2
     <HP>k__BackingField: 15
+  - <Name>k__BackingField: fort_1 [1000]
+    <ID>k__BackingField: 1000
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 4067803455660004270, guid: 6f4eb9cf17e9ab34db83b8fa7836c557, type: 3}
+    <Price>k__BackingField: 100
+    <Inventory>k__BackingField: 2
+    <HP>k__BackingField: 15
