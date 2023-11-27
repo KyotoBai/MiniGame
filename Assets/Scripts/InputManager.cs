@@ -46,4 +46,12 @@ public class InputManager : MonoBehaviour
             OnExit?.Invoke();
         }
     }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus)
+        {
+            OnExit?.Invoke();
+        }
+    }
 }
