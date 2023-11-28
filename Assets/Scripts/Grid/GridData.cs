@@ -26,14 +26,14 @@ public class GridData
 
     public bool CanPlaceObj(Vector3Int gridPosition, Vector3Int objSize)
     {
-        bool canPlace = false;
+        bool canPlace = true;
         List<Vector3Int> positionToOccupy = CalcPositions(gridPosition, objSize);
 
         foreach (var position in positionToOccupy)
         {
             if (gridArray[position.x, position.y, position.z].isOccupy)
             {
-                break;
+                return false;
             }
         }
         return canPlace;
