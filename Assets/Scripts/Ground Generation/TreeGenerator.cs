@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TreeGenerator : MonoBehaviour
 {
@@ -53,10 +54,18 @@ public class TreeGenerator : MonoBehaviour
                 GameObject newTree = Instantiate(selectedTreePrefab, treePosition, treeRotation);
 
                 newTree.transform.SetParent(groundTransform, true);
+                newTree.transform.localScale = treeScale;
+
+                // add tree into navmesh
+                NavMeshObstacle obstacle = newTree.AddComponent<NavMeshObstacle>();
+                obstacle.shape = NavMeshObstacleShape.Capsule; // Or Box, depending on your preference
+                obstacle.center = new Vector3(0, height / 2, 0); // Adjust the center if needed
+                obstacle.size = new Vector3(0.1f, height, 0.1f);
+                obstacle.carving = true;
 
                 newTree.layer = LayerMask.NameToLayer("PlacementObject");
                 newTree.AddComponent<CapsuleCollider>();
-                newTree.transform.localScale = treeScale;
+                
 
                 treesPlaced++;
             }
