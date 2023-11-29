@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 public class PlacementSys : MonoBehaviour
@@ -19,6 +20,10 @@ public class PlacementSys : MonoBehaviour
 
     [SerializeField]
     private GameObject gridVisualization;
+
+    // set parent
+    [SerializeField]
+    private Transform groundTransform;
 
     [SerializeField]
     public string rotationKeyPress;
@@ -134,6 +139,15 @@ public class PlacementSys : MonoBehaviour
         }
         health.maxHitPoints = database.objData[selectObjIndex].HP;
         health.currentHitPoints = database.objData[selectObjIndex].HP;
+
+        // add obj into navmesh
+        NavMeshObstacle obstacle = newGameObj.AddComponent<NavMeshObstacle>();
+        obstacle.shape = NavMeshObstacleShape.Capsule;
+        obstacle.center = new Vector3(0, 0, 0);
+        obstacle.size = new Vector3(0.1f, 1, 0.1f); // NEED change
+        obstacle.carving = true;
+
+        newGameObj.transform.SetParent(groundTransform, true);
 
     }
 

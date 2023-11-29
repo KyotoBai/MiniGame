@@ -58,8 +58,8 @@ public class TreeGenerator : MonoBehaviour
 
                 // add tree into navmesh
                 NavMeshObstacle obstacle = newTree.AddComponent<NavMeshObstacle>();
-                obstacle.shape = NavMeshObstacleShape.Capsule; // Or Box, depending on your preference
-                obstacle.center = new Vector3(0, height / 2, 0); // Adjust the center if needed
+                obstacle.shape = NavMeshObstacleShape.Capsule; 
+                obstacle.center = new Vector3(0, height / 2, 0); 
                 obstacle.size = new Vector3(0.1f, height, 0.1f);
                 obstacle.carving = true;
 
