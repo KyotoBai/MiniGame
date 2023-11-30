@@ -3478,9 +3478,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treePrefabs:
-  - {fileID: 919132149155446097, guid: e44ff605c3595af4b95a7139e9e53b78, type: 3}
-  - {fileID: 919132149155446097, guid: d4bd2b98e3726e74cb817bf62da445a1, type: 3}
-  - {fileID: 919132149155446097, guid: 935514a9708c2d14496d82f105ae6953, type: 3}
+  - {fileID: 1099655797169655754, guid: fd7fda8b8e182fc4088584de30533e24, type: 3}
+  - {fileID: 7586775199409661566, guid: 984b5cbf6e93bfc408a923e95bdf91d9, type: 3}
+  - {fileID: 6562141344497818841, guid: e567b61e5a67817438cafcfeb4aca320, type: 3}
+  - {fileID: 4741914967639565677, guid: 1799fb121321c5d4981e95b2c75f941c, type: 3}
+  - {fileID: 1955239110275379741, guid: 0d789b8ded962c74b8e32fcee3167f65, type: 3}
+  - {fileID: 3183211322034576576, guid: 118052e2cbd701e48a115a1be066f38b, type: 3}
+  - {fileID: 7637012229628359723, guid: 41685de129a9026449bc168fe6be4b8c, type: 3}
+  - {fileID: 3030108764987398270, guid: 720857ed3c67cdb49a1d52ca5c472cac, type: 3}
+  - {fileID: 6357539767164909522, guid: e4ebe25287b69ca4788c0162f12f5028, type: 3}
+  - {fileID: 6484530641393097879, guid: d0e4b8624a1d2cf4e895025875bba2fd, type: 3}
+  - {fileID: 2394114120401755319, guid: 4e1a81cdff1f02a4dba185938ec6d895, type: 3}
+  - {fileID: 3980956546849833083, guid: 1a4f0bb20ecec2747a137f9a8099578b, type: 3}
+  - {fileID: 6935734421204184748, guid: cee1b11a5ddd53f469c108e6b180a434, type: 3}
+  - {fileID: 89966172511715957, guid: 867969d1193461e49b9201ba984f51e1, type: 3}
+  - {fileID: 6880362279067335798, guid: 264a08c728bc92e4c997d49853bb8c8f, type: 3}
+  - {fileID: 2629549796553153430, guid: f9189b696d2fac647be57e98d230c01e, type: 3}
+  - {fileID: 3361981647605182360, guid: 4a81ba8b96ec0f740bcd91fd1e26fe06, type: 3}
+  - {fileID: 2991654063618255713, guid: 8908e93c5feef8b47b03c29efffe906f, type: 3}
+  - {fileID: 8850687434194686992, guid: 29180891bf8484748ae425bf4623f02e, type: 3}
+  - {fileID: 1764050668519927019, guid: 5f0e20d4c06c7774aa9ff85445db4cb0, type: 3}
+  - {fileID: 7998495573036753329, guid: bf41f244dbc58e14db4dbfab897fdf9c, type: 3}
+  - {fileID: 2985214115844465176, guid: 136232ca3072a3c47978077bc2938a57, type: 3}
+  - {fileID: 346678152731423116, guid: 83268602ecf0ddf49adfcd40352baaec, type: 3}
+  - {fileID: 689566460737599478, guid: 431a8156dff58534f9abbd51db47af12, type: 3}
+  - {fileID: 2137823536530404811, guid: 9de674bd93b25754faafe496edd127cf, type: 3}
   numberOfTrees: 500
   treeScaleRange: {x: 0.8, y: 2}
   treeHeightRange: {x: 0.5, y: 2}
