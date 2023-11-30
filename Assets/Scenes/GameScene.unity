@@ -381,7 +381,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 53821977}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.50000197
+  m_Radius: 0.1
   m_Speed: 3
   m_Acceleration: 4
   avoidancePriority: 50
@@ -1063,6 +1063,7 @@ GameObject:
   - component: {fileID: 322817625}
   - component: {fileID: 322817624}
   - component: {fileID: 322817623}
+  - component: {fileID: 322817626}
   m_Layer: 5
   m_Name: Fence Curve 03
   m_TagString: Untagged
@@ -1186,6 +1187,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322817621}
   m_CullTransparentMesh: 1
+--- !u!114 &322817626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322817621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d387f840aa7a5e4d9e5d7e3d8328ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 52
 --- !u!1 &351942932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1243,7 @@ GameObject:
   - component: {fileID: 360326915}
   - component: {fileID: 360326914}
   - component: {fileID: 360326913}
+  - component: {fileID: 360326916}
   m_Layer: 5
   m_Name: turret 01
   m_TagString: Untagged
@@ -1352,6 +1367,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360326911}
   m_CullTransparentMesh: 1
+--- !u!114 &360326916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360326911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d387f840aa7a5e4d9e5d7e3d8328ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 49
 --- !u!1 &376082457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,6 +1901,7 @@ GameObject:
   - component: {fileID: 778366948}
   - component: {fileID: 778366947}
   - component: {fileID: 778366946}
+  - component: {fileID: 778366949}
   m_Layer: 5
   m_Name: Fence Curve 01
   m_TagString: Untagged
@@ -1996,6 +2025,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778366944}
   m_CullTransparentMesh: 1
+--- !u!114 &778366949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778366944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d387f840aa7a5e4d9e5d7e3d8328ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 50
 --- !u!1 &787580150
 GameObject:
   m_ObjectHideFlags: 0
@@ -3808,6 +3850,7 @@ GameObject:
   - component: {fileID: 1878338027}
   - component: {fileID: 1878338026}
   - component: {fileID: 1878338025}
+  - component: {fileID: 1878338028}
   m_Layer: 5
   m_Name: Fence Straight
   m_TagString: Untagged
@@ -3931,6 +3974,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878338023}
   m_CullTransparentMesh: 1
+--- !u!114 &1878338028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878338023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d387f840aa7a5e4d9e5d7e3d8328ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 49
 --- !u!1 &1904552423
 GameObject:
   m_ObjectHideFlags: 0
@@ -3943,6 +3999,7 @@ GameObject:
   - component: {fileID: 1904552427}
   - component: {fileID: 1904552426}
   - component: {fileID: 1904552425}
+  - component: {fileID: 1904552428}
   m_Layer: 5
   m_Name: Fence Curve 02
   m_TagString: Untagged
@@ -4066,6 +4123,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904552423}
   m_CullTransparentMesh: 1
+--- !u!114 &1904552428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904552423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d387f840aa7a5e4d9e5d7e3d8328ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 51
 --- !u!1 &1927886830
 GameObject:
   m_ObjectHideFlags: 0
@@ -4453,6 +4523,7 @@ MonoBehaviour:
   placementLayermask:
     serializedVersion: 2
     m_Bits: 8
+  lastPlaceTime: 0
 --- !u!1 &2092345866
 GameObject:
   m_ObjectHideFlags: 0
