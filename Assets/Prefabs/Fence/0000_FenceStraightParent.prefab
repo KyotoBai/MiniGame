@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2125493244893586068}
   - component: {fileID: 5303782744720502963}
-  - component: {fileID: 550708877679073524}
   m_Layer: 0
   m_Name: 0000_FenceStraightParent
   m_TagString: Untagged
@@ -47,19 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitPoints: 10
---- !u!65 &550708877679073524
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134339379701205912}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  currentHitPoints: 0
 --- !u!1001 &1024576740196203053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143,7 +130,7 @@ BoxCollider:
   m_GameObject: {fileID: 214324279738140540}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.0000002, y: 0.345027, z: 0.05986403}
   m_Center: {x: 0, y: 0.1725135, z: 0.4959681}

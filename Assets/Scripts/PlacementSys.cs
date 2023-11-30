@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
@@ -66,6 +67,12 @@ public class PlacementSys : MonoBehaviour
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
         placementHint = Instantiate(database.objData[selectObjIndex].Prefab);
+        Collider collider = placementHint.GetComponentInChildren<Collider>();
+        if (collider != null)
+        {
+            collider.enabled = false;
+            Debug.Log("Collider found!");
+        }
         previewMaterialInstance = new Material(previewRenderMaterial);
 
         Renderer[] renderers = placementHint.GetComponentsInChildren<Renderer>();
@@ -129,9 +136,12 @@ public class PlacementSys : MonoBehaviour
         newGameObj.transform.position = placementHint.transform.position;
         newGameObj.transform.rotation = placementHint.transform.rotation;
         newGameObj.layer = LayerMask.NameToLayer("PlacementObject");
-        BoxCollider newObjectCollider = newGameObj.GetComponent<BoxCollider>();
-        newObjectCollider.center = new Vector3(0, 0, 0);
-        newObjectCollider.size = 0.9f * grid.cellSize;
+        BoxCollider newObjectCollider = newGameObj.GetComponentInChildren<BoxCollider>();
+        if ( newObjectCollider != null )
+        {
+            // newObjectCollider.center = new Vector3(0, 0, 0);
+            // newObjectCollider.size = 0.9f * grid.cellSize;
+        }
         Health health = newGameObj.GetComponent<Health>();
         if (health == null)
         {
@@ -164,7 +174,7 @@ public class PlacementSys : MonoBehaviour
         cellIndicator.transform.position = cellCenterInWorld;//+ currentLevel * levelStep;
         placementHint.transform.position = cellCenterInWorld;
 
-        Vector3 colliderCenter = grid.cellSize * 0.5f;
+        Vector3 colliderCenter = grid.cellSize * 0.4f;
         bool isCellOccupied = Physics.CheckBox(cellCenterInWorld, colliderCenter, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
         canPlace = !isCellOccupied;
 
@@ -197,11 +207,16 @@ public class PlacementSys : MonoBehaviour
         {
             if (!canPlace)
             {
-                Vector3 halfExtents = grid.cellSize * 0.5f;
+                Vector3 halfExtents = grid.cellSize * 0.4f;
                 Collider[] hitColliders = Physics.OverlapBox(cellCenterInWorld, halfExtents, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
                 foreach (Collider hitCollider in hitColliders)
                 {
-                    Destroy(hitCollider.gameObject); // Destroys the game objects that are in the occupied cell.
+                    GameObject parent = hitCollider.gameObject.transform.parent.gameObject;
+                    Destroy(hitCollider.gameObject);
+                    if (parent != null)
+                    {
+                        Destroy(parent);
+                    }
                     economyManager.AddCoins(1);
                 }
             }

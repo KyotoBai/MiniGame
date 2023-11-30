@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1904265789921210631}
   - component: {fileID: -2485214721067983383}
-  - component: {fileID: 4257786557695094743}
   - component: {fileID: 5901291104765629235}
   m_Layer: 0
   m_Name: 0001_FenceCorner01Parent
@@ -48,19 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitPoints: 10
---- !u!65 &4257786557695094743
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3806688328372497252}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  currentHitPoints: 0
 --- !u!114 &5901291104765629235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +152,7 @@ MeshCollider:
   m_GameObject: {fileID: 255021679279788135}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30

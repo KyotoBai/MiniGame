@@ -16,6 +16,9 @@ public class InputManager : MonoBehaviour
 
     private Vector3 lastPos;
 
+    private float placeCooldown = 0.03f;
+    public float lastPlaceTime = 0.0f;
+
     public Vector3 GetSelectedMapPosition()
     {
         Vector3 mousePos = Input.mousePosition;
@@ -39,7 +42,11 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            OnClicked?.Invoke();
+            if (Time.time - lastPlaceTime >= placeCooldown)
+            {
+                lastPlaceTime = Time.time;
+                OnClicked?.Invoke();
+            }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
