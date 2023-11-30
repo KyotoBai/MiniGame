@@ -215,7 +215,11 @@ public class PlacementSys : MonoBehaviour
                     Destroy(hitCollider.gameObject);
                     if (parent != null)
                     {
-                        Destroy(parent);
+                        NavMeshObstacle obstacle = parent.GetComponent<NavMeshObstacle>();
+                        if (obstacle != null)
+                        {
+                            Destroy(parent);
+                        }
                     }
                     economyManager.AddCoins(1);
                 }
