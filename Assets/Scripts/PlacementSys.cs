@@ -100,7 +100,7 @@ public class PlacementSys : MonoBehaviour
         previewRenderCellIndicator = cellIndicator.GetComponentsInChildren<Renderer>();
     }
 
-    private void StopPlacement()
+    public void StopPlacement()
     {
         selectObjIndex = -1;
         gridVisualization.SetActive(false);
