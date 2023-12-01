@@ -228,8 +228,8 @@ public class PlacementSys : MonoBehaviour
                     Destroy(hitCollider.gameObject);
                     if (parent != null)
                     {
-                        NavMeshObstacle obstacle = parent.GetComponent<NavMeshObstacle>();
-                        if (obstacle != null)
+                        Health health = parent.GetComponent<Health>();
+                        if (health != null)
                         {
                             Destroy(parent);
                         }
