@@ -34,7 +34,7 @@ public class AoEHandler
             GameObject obj = collider.gameObject;
             while (obj != null)
             {
-                Debug.Log(obj);
+                // Debug.Log(obj);
                 Health health = obj.GetComponent<Health>();
                 if (health != null)
                 {

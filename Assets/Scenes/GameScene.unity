@@ -1822,7 +1822,7 @@ GameObject:
   - component: {fileID: 620299151}
   - component: {fileID: 620299150}
   - component: {fileID: 620299149}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2645,6 +2645,8 @@ GameObject:
   m_Component:
   - component: {fileID: 943188001}
   - component: {fileID: 943188002}
+  - component: {fileID: 943188004}
+  - component: {fileID: 943188003}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -2685,6 +2687,55 @@ MonoBehaviour:
   acceleration: 3
   deceleration: 5
   stopAngle: 5
+--- !u!114 &943188003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943188000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb172a7467cbc248a646feb2f2e8bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  enemyParent: {fileID: 617539336}
+  sceneCam: {fileID: 866631707}
+  groundLayermask:
+    serializedVersion: 2
+    m_Bits: 256
+  bulletSpeed: 15
+  bulletDamage: 10
+  bulletAoESize: 0
+  bulletTargetLayers:
+    serializedVersion: 2
+    m_Bits: 192
+  bulletCooldown: 0.1
+  bulletKey: 32
+  projectileSpeed: 5
+  projectileDamage: 1000
+  projectileAoESize: 5
+  projectileTargetLayers:
+    serializedVersion: 2
+    m_Bits: 192
+  projectileCooldown: 5
+  projectileKey: 112
+--- !u!114 &943188004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943188000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe21b9265b2b7a4daac68960bf4e458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHitPoints: 100
+  currentHitPoints: 0
 --- !u!1 &977214458
 GameObject:
   m_ObjectHideFlags: 0

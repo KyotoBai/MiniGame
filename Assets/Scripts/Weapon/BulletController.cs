@@ -79,38 +79,30 @@ public class BulletController : MonoBehaviour
     void HitTarget()
     {
         Debug.Log("Target Hit!!!");
-        if (aoESize > 0)
+        if (aoESize <= 0)
         {
-            List<GameObject> targetsInAoE = aoEHandler.GetObjectsInSphereAoE(transform.position, aoESize);
-            Debug.Log("AoE on " + targetsInAoE.Count);
+            aoESize = 0.5f;
+        }
 
-            foreach (var obj in targetsInAoE)
-            {
-                Health health = obj.GetComponent<Health>();
-                if (health != null)
-                {
-                    health.TakeDamage(damage);
-                }
-            }
-        }
-        else
+        List<GameObject> targetsInAoE = aoEHandler.GetObjectsInSphereAoE(transform.position, aoESize);
+        Debug.Log("AoE on " + targetsInAoE.Count);
+
+        foreach (var obj in targetsInAoE)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 0.1f, targetLayers))
+            Health health = obj.GetComponent<Health>();
+            if (health != null)
             {
-                Health health = hit.collider.gameObject.GetComponent<Health>();
-                if (health != null)
-                {
-                    health.TakeDamage(damage);
-                }
+                health.TakeDamage(damage);
             }
         }
+        
         Destroy(gameObject); // Destroy the bullet after hitting the target
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (targetLayers == (targetLayers | (1 << other.gameObject.layer)))
+        Debug.Log(other.gameObject);
+        if ((targetLayers & (1 << other.gameObject.layer)) != 0)
         {
             Debug.Log("Collider Hit!!!");
             HitTarget();
