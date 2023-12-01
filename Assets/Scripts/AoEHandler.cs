@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class AoEHandler
@@ -25,7 +26,22 @@ public class AoEHandler
         foreach (Collider collider in colliders)
         {
             // Add the game object associated with the collider to the list
-            affectedObjects.Add(collider.gameObject);
+            GameObject obj = collider.gameObject;
+            while (obj != null)
+            {
+                Health health = obj.GetComponent<Health>();
+                if (health != null)
+                {
+                    break;
+                } else
+                {
+                    obj = obj.transform.parent.gameObject;
+                }
+            }
+            if (obj != null)
+            {
+                affectedObjects.Add(obj);
+            }
         }
 
         // Return the list of affected game objects

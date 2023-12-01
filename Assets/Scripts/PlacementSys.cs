@@ -53,6 +53,8 @@ public class PlacementSys : MonoBehaviour
     [SerializeField]
     private GameEconomyManager economyManager;
 
+    private AoEHandler aoEHandler;
+
     public void StartPlacement(int ID)
     {
         StopPlacement();
@@ -71,7 +73,6 @@ public class PlacementSys : MonoBehaviour
         if (collider != null)
         {
             collider.enabled = false;
-            Debug.Log("Collider found!");
         }
         previewMaterialInstance = new Material(previewRenderMaterial);
 
@@ -98,6 +99,7 @@ public class PlacementSys : MonoBehaviour
         Vector3 cellSize = grid.cellSize;
         levelStep = new Vector3(0, cellSize.x, 0);
         previewRenderCellIndicator = cellIndicator.GetComponentsInChildren<Renderer>();
+        aoEHandler = new AoEHandler(LayerMask.GetMask("PlacementObject"));
     }
 
     public void StopPlacement()
@@ -171,11 +173,14 @@ public class PlacementSys : MonoBehaviour
         Vector3 mousePos = inputManager.GetSelectedMapPosition();
         Vector3Int gridPos = grid.WorldToCell(mousePos);
         Vector3 cellCenterInWorld = grid.GetCellCenterWorld(gridPos) + currentLevel * levelStep - new Vector3(0, grid.cellSize.y / 2, 0);
+        Vector3 cellCenterMiddleInWorld = cellCenterInWorld + new Vector3(0, grid.cellSize.y / 2, 0);
         cellIndicator.transform.position = cellCenterInWorld;//+ currentLevel * levelStep;
         placementHint.transform.position = cellCenterInWorld;
 
-        Vector3 colliderCenter = grid.cellSize * 0.4f;
-        bool isCellOccupied = Physics.CheckBox(cellCenterInWorld, colliderCenter, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
+        Vector3 colliderCenter = grid.cellSize * 0.49f;
+        Vector3 boxSize = grid.cellSize * 0.49f;
+        Collider[] hitColliders = Physics.OverlapBox(cellCenterInWorld, boxSize, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
+        bool isCellOccupied = hitColliders.Length > 0;
         canPlace = !isCellOccupied;
 
         foreach (Renderer renderer in previewRenderCellIndicator)
@@ -208,7 +213,7 @@ public class PlacementSys : MonoBehaviour
             if (!canPlace)
             {
                 Vector3 halfExtents = grid.cellSize * 0.4f;
-                Collider[] hitColliders = Physics.OverlapBox(cellCenterInWorld, halfExtents, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
+                // Collider[] hitColliders = Physics.OverlapBox(cellCenterInWorld, halfExtents, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
                 foreach (Collider hitCollider in hitColliders)
                 {
                     GameObject parent = hitCollider.gameObject.transform.parent.gameObject;
@@ -231,7 +236,8 @@ public class PlacementSys : MonoBehaviour
             if (!canPlace)
             {
                 Vector3 halfExtents = grid.cellSize * 0.5f;
-                Collider[] hitColliders = Physics.OverlapBox(cellCenterInWorld, halfExtents, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
+                // Collider[] hitColliders = Physics.OverlapBox(cellCenterInWorld, halfExtents, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
+                /*
                 foreach (Collider hitCollider in hitColliders)
                 {
                     GameObject target = hitCollider.gameObject;
@@ -245,6 +251,16 @@ public class PlacementSys : MonoBehaviour
                         Debug.LogError("The target does not have a Health component.");
                     }
 
+                }
+                */
+                List<GameObject> gameObjects = aoEHandler.GetObjectsInSphereAoE(cellCenterInWorld, 1);
+                foreach (GameObject go in gameObjects)
+                {
+                    Health health = go.GetComponent<Health>();
+                    if (health != null)
+                    {
+                        health.TakeDamage(1);
+                    }
                 }
             }
         }
