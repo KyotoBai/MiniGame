@@ -153,11 +153,11 @@ public class PlacementSys : MonoBehaviour
         health.currentHitPoints = database.objData[selectObjIndex].HP;
 
         // add obj into navmesh
-        NavMeshObstacle obstacle = newGameObj.AddComponent<NavMeshObstacle>();
-        obstacle.shape = NavMeshObstacleShape.Capsule;
+        /***NavMeshObstacle obstacle = newGameObj.AddComponent<NavMeshObstacle>();
+        obstacle.shape = NavMeshObstacleShape.Box;
         obstacle.center = new Vector3(0, 0, 0);
         obstacle.size = new Vector3(0.1f, 1, 0.1f); // NEED change
-        obstacle.carving = true;
+        obstacle.carving = true;***/
 
         newGameObj.transform.SetParent(groundTransform, true);
 
