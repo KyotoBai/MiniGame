@@ -4724,4 +4724,4 @@ MonoBehaviour:
   damageKeyPress: z
   previewRenderMaterial: {fileID: 2100000, guid: eed4d14a51763c44fba87f63990ce42b, type: 2}
   economyManager: {fileID: 1502225218}
-  projectileEnemyParent: {fileID: 617539336}
+  enemyParent: {fileID: 617539336}

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5053974213256731961}
   - component: {fileID: -8464979721030467047}
   - component: {fileID: -6814310348133979267}
-  - component: {fileID: 8695639139286811365}
   m_Layer: 0
   m_Name: 1000 frontStraight_1
   m_TagString: Untagged
@@ -71,7 +70,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4067803455660004270}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b4d28ad9e746114fa617674cee27096, type: 3}
   m_Name: 
@@ -82,27 +81,6 @@ MonoBehaviour:
   aoESize: 0
   enemyParent: {fileID: 0}
   fireInterval: 0.1
-  targetLayers:
-    serializedVersion: 2
-    m_Bits: 192
---- !u!114 &8695639139286811365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4067803455660004270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4b4396da96434e458fb959e055e1555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5867569035586740050, guid: 6f6ac563f8018384fbfdbf1d3e61edc8, type: 3}
-  speed: 5
-  damage: 5
-  aoESize: 1
-  enemyParent: {fileID: 0}
-  fireInterval: 2
   targetLayers:
     serializedVersion: 2
     m_Bits: 192

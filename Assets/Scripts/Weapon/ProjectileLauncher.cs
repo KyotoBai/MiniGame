@@ -11,6 +11,7 @@ public class ProjectileLauncher : MonoBehaviour
     public GameObject enemyParent;
     public float fireInterval;
     public LayerMask targetLayers;
+    public float maxRange = 0;
 
     private float timeSinceLastFire;
 
