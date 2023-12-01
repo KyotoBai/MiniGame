@@ -28,8 +28,6 @@ public class BulletController : MonoBehaviour
             flightDuration = targetDistance / speed;
         }
 
-        Debug.Log("flightDuration: " + flightDuration);
-
         Collider collider = GetComponent<Collider>();
         if (collider != null)
         {
