@@ -55,6 +55,9 @@ public class PlacementSys : MonoBehaviour
 
     private AoEHandler aoEHandler;
 
+    [SerializeField]
+    private GameObject projectileEnemyParent = null;
+
     public void StartPlacement(int ID)
     {
         StopPlacement();
@@ -148,6 +151,11 @@ public class PlacementSys : MonoBehaviour
         if (health == null)
         {
             health = newGameObj.AddComponent<Health>();
+        }
+        ProjectileLauncher projectileLauncher = newGameObj.GetComponent<ProjectileLauncher>();
+        if (projectileLauncher != null)
+        {
+            projectileLauncher.enemyParent = projectileEnemyParent;
         }
         health.maxHitPoints = database.objData[selectObjIndex].HP;
         health.currentHitPoints = database.objData[selectObjIndex].HP;

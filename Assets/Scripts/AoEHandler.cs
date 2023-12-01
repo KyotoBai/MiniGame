@@ -11,6 +11,11 @@ public class AoEHandler
         this.layer = layer;
     }
 
+    public AoEHandler(int layer)
+    {
+        this.layer = layer;
+    }
+
     // This function returns a list of game objects affected by a spherical AoE
     public List<GameObject> GetObjectsInSphereAoE(Vector3 center, float size)
     {
@@ -35,7 +40,14 @@ public class AoEHandler
                     break;
                 } else
                 {
-                    obj = obj.transform.parent.gameObject;
+                    if (obj.transform.parent != null)
+                    {
+                        obj = obj.transform.parent.gameObject;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
             if (obj != null)

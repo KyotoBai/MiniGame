@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 53821979}
   - component: {fileID: 53821983}
   - component: {fileID: 53821982}
+  - component: {fileID: 53821984}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -393,6 +394,20 @@ NavMeshAgent:
   m_BaseOffset: 1.0000001
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &53821984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53821977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe21b9265b2b7a4daac68960bf4e458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHitPoints: 100
+  currentHitPoints: 0
 --- !u!1 &75402464
 GameObject:
   m_ObjectHideFlags: 0
@@ -4658,3 +4673,4 @@ MonoBehaviour:
   damageKeyPress: z
   previewRenderMaterial: {fileID: 2100000, guid: eed4d14a51763c44fba87f63990ce42b, type: 2}
   economyManager: {fileID: 1502225218}
+  projectileEnemyParent: {fileID: 617539336}
