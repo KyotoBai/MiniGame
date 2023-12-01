@@ -370,7 +370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a304bdb0e2a724e4b87b997278a9a99b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
   target: {fileID: 1875722818}
 --- !u!195 &53821983
 NavMeshAgent:
@@ -4336,8 +4335,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 78.62, y: 35, z: 80.3}
-  m_Center: {x: -10.4, y: 0, z: -9.43}
+  m_Size: {x: 87.9, y: 35, z: 86.7}
+  m_Center: {x: -5.9, y: 0, z: -6.6}
 --- !u!4 &1986838986
 Transform:
   m_ObjectHideFlags: 0
