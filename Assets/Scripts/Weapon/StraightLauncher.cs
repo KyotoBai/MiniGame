@@ -1,8 +1,9 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AI;
 
-public class ProjectileLauncher : MonoBehaviour
+public class StraightLauncher : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public float speed;
@@ -31,11 +32,12 @@ public class ProjectileLauncher : MonoBehaviour
         {
             if (timeSinceLastFire >= fireInterval)
             {
-                if (enemyParent  != null)
+                if (enemyParent != null)
                 {
-                    FireProjectile();
+                    FireStraight();
                     timeSinceLastFire = 0f;
-                } else
+                }
+                else
                 {
                     Debug.Log("Enemy parent object is not assigned.");
                 }
@@ -44,25 +46,24 @@ public class ProjectileLauncher : MonoBehaviour
         }
     }
 
-    void FireProjectile()
+    void FireStraight()
     {
         GameObject nearestEnemy = FindNearestEnemy();
         Vector3 velocity = nearestEnemy.GetComponent<NavMeshAgent>().velocity;
-        //Debug.Log("velocity is: " + velocity);
+
         if (nearestEnemy != null)
         {
-            GameObject bullet = bulletPrefab != null ? Instantiate(bulletPrefab, transform.position, Quaternion.identity) : CreateDefaultBullet();
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.transform.position = transform.position;
             BulletController bulletController = bullet.AddComponent<BulletController>();
             bullet.transform.LookAt(nearestEnemy.transform.position);
-            bulletController.type = BulletController.BulletType.Projectile;
+            bulletController.type = BulletController.BulletType.Straight;
             bulletController.target = nearestEnemy.transform.position;
             bulletController.speed = speed;
             bulletController.damage = damage;
             bulletController.aoESize = aoESize;
             bulletController.targetLayers = targetLayers;
             bulletController.targetVelocity = velocity;
-            
             // Adjust bullet controller target layers and other parameters as needed
         }
     }
@@ -74,8 +75,8 @@ public class ProjectileLauncher : MonoBehaviour
 
         foreach (Transform child in enemyParent.transform)
         {
-            ProjectileLauncher projectile = child.GetComponent<ProjectileLauncher>();
-            if (projectile == null)
+            StraightLauncher straight = child.GetComponent<StraightLauncher>();
+            if (straight == null)
             {
                 float distance = Vector3.Distance(transform.position, child.position);
                 if (distance < nearestDistance)
@@ -89,12 +90,5 @@ public class ProjectileLauncher : MonoBehaviour
         return nearestEnemy;
     }
 
-    GameObject CreateDefaultBullet()
-    {
-        GameObject defaultBullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        defaultBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f); // Set the size of the default bullet
-        // defaultBullet.AddComponent<Rigidbody>().useGravity = false; // Add Rigidbody and disable gravity
-        defaultBullet.transform.position = transform.position;
-        return defaultBullet;
-    }
+    
 }

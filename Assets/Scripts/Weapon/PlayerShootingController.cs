@@ -46,7 +46,7 @@ public class PlayerShootingController : MonoBehaviour
     {
         GameObject bullet = InstantiateBullet(bulletPrefab);
         BulletController bulletController = bullet.AddComponent<BulletController>();
-        bulletController.type = BulletController.BulletType.Bullet;
+        bulletController.type = BulletController.BulletType.BulletPlayer;
         Vector3 mousePos = GetSelectedMapPosition();
         // Debug.Log(mousePos);
         Vector3 targetDirection = mousePos - transform.position;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BulletController : MonoBehaviour
 {
-    public enum BulletType { Bullet, Projectile }
+    public enum BulletType { BulletPlayer, Projectile, Straight}
 
     [SerializeField] public BulletType type;
     [SerializeField] public Vector3 target;
@@ -11,6 +11,7 @@ public class BulletController : MonoBehaviour
     [SerializeField] public int damage = 100;
     [SerializeField] public float aoESize = 0;
     [SerializeField] public LayerMask targetLayers;
+    public Vector3 targetVelocity;
 
     private float timeSinceLaunch;
     private Vector3 startPosition;
@@ -22,8 +23,11 @@ public class BulletController : MonoBehaviour
         aoEHandler = new AoEHandler(targetLayers);
         startPosition = transform.position;
 
-        if (type == BulletType.Projectile)
+        if (type == BulletType.Projectile || type == BulletType.Straight)
         {
+            
+            target = Prediction(speed, startPosition, target, targetVelocity, 1);
+            
             float targetDistance = Vector3.Distance(startPosition, target);
             flightDuration = targetDistance / speed;
         }
@@ -41,19 +45,23 @@ public class BulletController : MonoBehaviour
 
     void Update()
     {
-        if (type == BulletType.Bullet)
+        if (type == BulletType.BulletPlayer)
         {
             MoveStraight();
         }
         else if (type == BulletType.Projectile)
         {
             MoveParabolic();
+        }else if (type == BulletType.Straight)
+        {
+            MoveStraightLockTarget();
         }
     }
 
     void MoveStraight()
     {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        //transform.rotation = Quaternion.Euler(90, 0, 0);
         if (Vector3.Distance(transform.position, target) < 0.1f)
         {
             HitTarget();
@@ -66,7 +74,32 @@ public class BulletController : MonoBehaviour
         float timeRatio = timeSinceLaunch / flightDuration;
 
         Vector3 nextPosition = Vector3.Lerp(startPosition, target, timeRatio);
+        //Debug.Log("next post: " + nextPosition);
         nextPosition.y += Mathf.Sin(timeRatio * Mathf.PI) * (flightDuration * speed * 0.25f); // Adjust the height factor as needed
+
+        Vector3 tangent = nextPosition - transform.position;
+
+        // Rotate the bullet to point in the direction of the tangent
+        if (tangent != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(tangent.normalized)*Quaternion.Euler(90,0,0);
+        }
+
+        transform.position = nextPosition;
+
+        if (timeSinceLaunch >= flightDuration)
+        {
+            HitTarget();
+        }
+    }
+
+    void MoveStraightLockTarget()
+    {
+        timeSinceLaunch += Time.deltaTime;
+        float timeRatio = timeSinceLaunch / flightDuration;
+
+        Vector3 nextPosition = Vector3.Lerp(startPosition, target, timeRatio);
+        //Debug.Log("next post: " + nextPosition);
 
         transform.position = nextPosition;
 
@@ -107,5 +140,23 @@ public class BulletController : MonoBehaviour
             Debug.Log("Collider Hit!!!");
             HitTarget();
         }
+    }
+
+    Vector3 Prediction(float BulletSpeed, Vector3 startPos, Vector3 targetPos, Vector3 targetVelocity, int iter)
+    {
+        Vector3 targetNewPos = targetPos;
+        float t = Vector3.Distance(targetNewPos, startPos) / BulletSpeed;
+        for (int i = 0; i < iter; i++)
+        {
+            if (type == BulletType.Projectile)
+            {
+                targetNewPos = targetPos + targetVelocity * (t * 0.7f);
+            }else if (type == BulletType.Straight)
+            {
+                targetNewPos = targetPos + targetVelocity * t;
+            }
+            t = Vector3.Distance(targetNewPos, startPos) / BulletSpeed;
+        }
+        return targetNewPos;
     }
 }
