@@ -1,25 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyMove : MonoBehaviour
 {
-    public NavMeshAgent Agent;
     public Transform target;
-    // Start is called before the first frame update
+    private NavMeshAgent agent;
+    private float pathUpdateInterval = 0.5f; // Time in seconds to update the path
+    private NavMeshPath path;
+
     void Start()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
+        path = new NavMeshPath();
+        StartCoroutine(UpdatePathRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator UpdatePathRoutine()
     {
-        this.Agent.SetDestination(this.target.position);
-        if (Agent.path.status == NavMeshPathStatus.PathPartial)
+        while (true)
         {
-            Debug.Log("Partial path found");
+            UpdatePathToTarget();
+            yield return new WaitForSeconds(pathUpdateInterval);
+        }
+    }
+
+    void UpdatePathToTarget()
+    {
+        NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path);
+        if (path.status == NavMeshPathStatus.PathComplete)
+        {
+            agent.SetPath(path);
+        }
+        else if (path.status == NavMeshPathStatus.PathPartial)
+        {
+            MoveToLastReachablePoint();
+        }
+    }
+
+    private void MoveToLastReachablePoint()
+    {
+        if (path.corners.Length > 1)
+        {
+            Vector3 lastReachablePoint = path.corners[path.corners.Length - 2];
+            NavMeshPath partialPath = new NavMeshPath();
+            NavMesh.CalculatePath(transform.position, lastReachablePoint, NavMesh.AllAreas, partialPath);
+            if (partialPath.status == NavMeshPathStatus.PathComplete)
+            {
+                agent.SetPath(partialPath);
+            }
         }
     }
 }
