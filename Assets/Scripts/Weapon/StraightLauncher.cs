@@ -9,8 +9,9 @@ public class StraightLauncher : MonoBehaviour
     public float speed;
     public int damage;
     public float aoESize;
-    public GameObject enemyParent;
     public float fireInterval;
+    public float attackRange = 0f;
+    public GameObject enemyParent;
     public LayerMask targetLayers;
     public Vector3 bulletOffset;
     public string gunObjectName;
@@ -53,10 +54,10 @@ public class StraightLauncher : MonoBehaviour
     void FireStraight()
     {
         GameObject nearestEnemy = FindNearestEnemy();
-        Vector3 velocity = nearestEnemy.GetComponent<NavMeshAgent>().velocity;
-
+        
         if (nearestEnemy != null)
         {
+            Vector3 velocity = nearestEnemy.GetComponent<NavMeshAgent>().velocity;
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.transform.position = transform.position + bulletOffset;
             BulletController bulletController = bullet.AddComponent<BulletController>();
@@ -74,6 +75,7 @@ public class StraightLauncher : MonoBehaviour
             {
                 Transform gunObjectTransform = gunObject.transform;
                 Vector3 direction = target - transform.position;
+                direction.y = 0f;
                 direction.Normalize();
                 gunObjectTransform.rotation = Quaternion.LookRotation(direction);
             }
@@ -85,6 +87,10 @@ public class StraightLauncher : MonoBehaviour
     {
         GameObject nearestEnemy = null;
         float nearestDistance = Mathf.Infinity;
+        if (attackRange > 0.1f)
+        {
+            nearestDistance = attackRange;
+        }
 
         foreach (Transform child in enemyParent.transform)
         {

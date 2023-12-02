@@ -79,8 +79,9 @@ MonoBehaviour:
   speed: 10
   damage: 1
   aoESize: 0
-  enemyParent: {fileID: 0}
   fireInterval: 0.1
+  attackRange: 10
+  enemyParent: {fileID: 0}
   targetLayers:
     serializedVersion: 2
     m_Bits: 192
