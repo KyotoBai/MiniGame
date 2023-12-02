@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public bool weaponOn = false;
+    public bool stopMovement = false;
     public float speed = 5.0f;
     public float rotationSpeed = 720.0f; // Degrees per second
     public float acceleration = 1.0f;
@@ -14,6 +14,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (stopMovement)
+        {
+            return;
+        }
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         bool isMovingInput = moveHorizontal != 0 || moveVertical != 0;
