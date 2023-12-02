@@ -16,7 +16,7 @@ TagManager:
   - Ground
   - Player
   - Camera
-  - 
+  - MapBoundingBox
   - 
   - 
   - 
