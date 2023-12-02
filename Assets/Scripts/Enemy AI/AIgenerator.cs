@@ -74,7 +74,7 @@ public class AIgenerator : MonoBehaviour
     {
         float r_x = Random.Range(-r, r);
         float xPos = center.x + r_x;
-        float zPos = center.z + (r - Mathf.Abs(r_x));
+        float zPos = center.z + (r - Mathf.Abs(r_x))*(Random.Range(0, 2) - 1);
         return new Vector3(xPos, center.y ,zPos);
     }
 
