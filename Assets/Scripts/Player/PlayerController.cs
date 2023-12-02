@@ -45,6 +45,11 @@ public class PlayerController : MonoBehaviour
             transform.rotation = rotation;
         }
 
+        if (weaponOn)
+        {
+            rotation = targetRotation;
+        }
+
         // Determine the target velocity
         Vector3 targetVelocity = isMovingInput && Quaternion.Angle(rotation, Quaternion.LookRotation(new Vector3(-targetDirection.z, 0.0f, targetDirection.x))) < stopAngle ? targetDirection * speed : Vector3.zero;
 
@@ -60,10 +65,7 @@ public class PlayerController : MonoBehaviour
 
         // Set the direction of current velocity to match the character's forward direction
         currentVelocity = targetDirection * currentSpeed;
-        if (weaponOn)
-        {
-            currentVelocity = new Vector3(moveHorizontal, 0.0f, moveVertical).normalized * speed;
-        }
+
         Debug.Log(currentVelocity);
 
         // Move the character
