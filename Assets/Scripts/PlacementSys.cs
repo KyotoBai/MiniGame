@@ -157,9 +157,10 @@ public class PlacementSys : MonoBehaviour
         if (projectileLauncher != null)
         {
             projectileLauncher.enemyParent = enemyParent;
-        }else
+        }
+        StraightLauncher straightLauncher = newGameObj.GetComponent<StraightLauncher>();
+        if (straightLauncher != null)
         {
-            StraightLauncher straightLauncher = newGameObj.GetComponent<StraightLauncher>();
             straightLauncher.enemyParent = enemyParent;
         }
         health.maxHitPoints = database.objData[selectObjIndex].HP;
