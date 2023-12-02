@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BulletController : MonoBehaviour
 {
-    public enum BulletType { BulletPlayer, Projectile, Straight}
+    public enum BulletType { BulletPlayer, Projectile, Straight }
 
     [SerializeField] public BulletType type;
     [SerializeField] public Vector3 target;
@@ -25,9 +25,9 @@ public class BulletController : MonoBehaviour
 
         if (type == BulletType.Projectile || type == BulletType.Straight)
         {
-            
+
             target = Prediction(speed, startPosition, target, targetVelocity, 1);
-            
+
             float targetDistance = Vector3.Distance(startPosition, target);
             flightDuration = targetDistance / speed;
         }
@@ -52,7 +52,8 @@ public class BulletController : MonoBehaviour
         else if (type == BulletType.Projectile)
         {
             MoveParabolic();
-        }else if (type == BulletType.Straight)
+        }
+        else if (type == BulletType.Straight)
         {
             MoveStraightLockTarget();
         }
@@ -82,7 +83,7 @@ public class BulletController : MonoBehaviour
         // Rotate the bullet to point in the direction of the tangent
         if (tangent != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(tangent.normalized)*Quaternion.Euler(90,0,0);
+            transform.rotation = Quaternion.LookRotation(tangent.normalized) * Quaternion.Euler(90, 0, 0);
         }
 
         transform.position = nextPosition;
@@ -108,6 +109,14 @@ public class BulletController : MonoBehaviour
 
         Vector3 nextPosition = Vector3.Lerp(startPosition, target, timeRatio);
         //Debug.Log("next post: " + nextPosition);
+
+        Vector3 tangent = nextPosition - transform.position;
+
+        // Rotate the bullet to point in the direction of the tangent
+        if (tangent != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(tangent.normalized) * Quaternion.Euler(90, 0, 0);
+        }
 
         transform.position = nextPosition;
 
@@ -145,7 +154,7 @@ public class BulletController : MonoBehaviour
                 health.TakeDamage(damage);
             }
         }
-        
+
         Destroy(gameObject); // Destroy the bullet after hitting the target
     }
 
@@ -168,7 +177,8 @@ public class BulletController : MonoBehaviour
             if (type == BulletType.Projectile)
             {
                 targetNewPos = targetPos + targetVelocity * (t * 0.7f);
-            }else if (type == BulletType.Straight)
+            }
+            else if (type == BulletType.Straight)
             {
                 targetNewPos = targetPos + targetVelocity * t;
             }

@@ -70,7 +70,7 @@ public class StraightLauncher : MonoBehaviour
 
             Vector3 direction = target - transform.position;
             direction.Normalize();
-            transform.Find(gunObjectName).rotation = Quaternion.LookRotation(direction);
+            transform.Find(gunObjectName).rotation = Quaternion.Euler(0,Quaternion.LookRotation(direction).eulerAngles.y,0);
             // Adjust bullet controller target layers and other parameters as needed
         }
     }
