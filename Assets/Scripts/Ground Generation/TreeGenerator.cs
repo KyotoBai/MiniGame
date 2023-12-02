@@ -13,6 +13,8 @@ public class TreeGenerator : MonoBehaviour
     private Vector2 treeScaleRange = new Vector2(0.8f, 1.2f); // Min and Max scale
     [SerializeField]
     private Vector2 treeHeightRange = new Vector2(0.5f, 1.5f); // Min and Max height
+    [SerializeField]
+    private string layerName = "Default";
 
     public Transform groundTransform;
     public float terrainWidth = 100f;
@@ -63,9 +65,13 @@ public class TreeGenerator : MonoBehaviour
                 obstacle.size = new Vector3(0.1f, height, 0.1f);
                 obstacle.carving = true;
 
-                newTree.layer = LayerMask.NameToLayer("PlacementObject");
-                newTree.AddComponent<CapsuleCollider>();
-                
+                newTree.layer = LayerMask.NameToLayer(layerName);
+                foreach (Transform child in newTree.transform)
+                {
+                    child.gameObject.layer = LayerMask.NameToLayer(layerName);
+                }
+                // newTree.AddComponent<CapsuleCollider>();
+
 
                 treesPlaced++;
             }

@@ -176,15 +176,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 919132149155446097, guid: 3e3af7d1618d973498c32353b320b87b, type: 3}
   bulletScale: 10
-  speed: 5
-  damage: 10
+  speed: 4
+  damage: 1
   aoESize: 5
   maxRange: 10
   enemyParent: {fileID: 0}
   fireInterval: 0.5
   targetLayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 128
   bulletOffset: {x: 0, y: 1, z: 0}
   gunObjectName: rocketlauncherModernRotating
 --- !u!1001 &5601097530670281554
