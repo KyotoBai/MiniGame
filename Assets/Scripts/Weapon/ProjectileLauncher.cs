@@ -8,16 +8,20 @@ public class ProjectileLauncher : MonoBehaviour
     public float speed;
     public int damage;
     public float aoESize;
+    public float maxRange = 0;
     public GameObject enemyParent;
     public float fireInterval;
     public LayerMask targetLayers;
-    public float maxRange = 0;
+    public Vector3 bulletOffset;
+    public string gunObjectName;
 
     private float timeSinceLastFire;
+    private GameObject gunObject = null;
 
     void Start()
     {
         timeSinceLastFire = 0f;
+        gunObject = transform.Find(gunObjectName).gameObject;
         StartCoroutine(FireRoutine());
     }
 
@@ -48,23 +52,34 @@ public class ProjectileLauncher : MonoBehaviour
     void FireProjectile()
     {
         GameObject nearestEnemy = FindNearestEnemy();
-        Vector3 velocity = nearestEnemy.GetComponent<NavMeshAgent>().velocity;
-        //Debug.Log("velocity is: " + velocity);
         if (nearestEnemy != null)
         {
             GameObject bullet = bulletPrefab != null ? Instantiate(bulletPrefab, transform.position, Quaternion.identity) : CreateDefaultBullet();
-            bullet.transform.position = transform.position;
+            bullet.transform.position = transform.position + bulletOffset;
             BulletController bulletController = bullet.AddComponent<BulletController>();
             bullet.transform.LookAt(nearestEnemy.transform.position);
             bulletController.type = BulletController.BulletType.Projectile;
-            bulletController.target = nearestEnemy.transform.position;
+            Vector3 target = nearestEnemy.transform.position;
+            bulletController.target = target;
             bulletController.speed = speed;
             bulletController.damage = damage;
             bulletController.aoESize = aoESize;
             bulletController.targetLayers = targetLayers;
+            Vector3 velocity = nearestEnemy.GetComponent<NavMeshAgent>().velocity;
             bulletController.targetVelocity = velocity;
-            
-            // Adjust bullet controller target layers and other parameters as needed
+
+            if (gunObject != null)
+            {
+                float targetDistance = Vector3.Distance(transform.position, target);
+                float flightDuration = targetDistance / speed;
+                float timeSinceLaunch = Time.deltaTime * 12;
+                float timeRatio = timeSinceLaunch / flightDuration;
+                Vector3 nextPosition = Vector3.Lerp(transform.position, target, timeRatio);
+                nextPosition.y += Mathf.Sin(timeRatio * Mathf.PI) * (flightDuration * speed * 0.25f);
+                Vector3 tangent = nextPosition - transform.position;
+                Transform gunObjectTransform = gunObject.transform;
+                gunObjectTransform.rotation = Quaternion.LookRotation(tangent.normalized);
+            }
         }
     }
 
