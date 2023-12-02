@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class ProjectileLauncher : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public float bulletScale;
     public float speed;
     public int damage;
     public float aoESize;
@@ -55,6 +56,7 @@ public class ProjectileLauncher : MonoBehaviour
         if (nearestEnemy != null)
         {
             GameObject bullet = bulletPrefab != null ? Instantiate(bulletPrefab, transform.position, Quaternion.identity) : CreateDefaultBullet();
+            bullet.transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
             bullet.transform.position = transform.position + bulletOffset;
             BulletController bulletController = bullet.AddComponent<BulletController>();
             bullet.transform.LookAt(nearestEnemy.transform.position);
