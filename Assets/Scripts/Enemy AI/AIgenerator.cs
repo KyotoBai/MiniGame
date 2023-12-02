@@ -7,7 +7,7 @@ public class AIgenerator : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] enemyPrefab;
-    [SerializeField, Range(0, 15)]
+    [SerializeField, Range(0, 20)]
     private int numberOfEnemyToAdd = 50;
     [SerializeField]
     private Transform generateCenter;
