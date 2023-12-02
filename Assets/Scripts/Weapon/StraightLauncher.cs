@@ -12,6 +12,7 @@ public class StraightLauncher : MonoBehaviour
     public GameObject enemyParent;
     public float fireInterval;
     public LayerMask targetLayers;
+    public string gunObjectName;
 
     private float timeSinceLastFire;
 
@@ -58,14 +59,17 @@ public class StraightLauncher : MonoBehaviour
             BulletController bulletController = bullet.AddComponent<BulletController>();
             bullet.transform.LookAt(nearestEnemy.transform.position);
             bulletController.type = BulletController.BulletType.Straight;
-            bulletController.target = nearestEnemy.transform.position;
+            Vector3 target = nearestEnemy.transform.position;
+            bulletController.target = target;
             bulletController.speed = speed;
             bulletController.damage = damage;
             bulletController.aoESize = aoESize;
             bulletController.targetLayers = targetLayers;
             bulletController.targetVelocity = velocity;
 
-            transform.Find("Gun").rotation = bulletController.GetOrientation();
+            Vector3 direction = target - transform.position;
+            direction.Normalize();
+            transform.Find(gunObjectName).rotation = Quaternion.LookRotation(direction);
             // Adjust bullet controller target layers and other parameters as needed
         }
     }

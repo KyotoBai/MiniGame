@@ -87,6 +87,14 @@ public class BulletController : MonoBehaviour
 
         transform.position = nextPosition;
 
+        Vector3 direction = nextPosition - transform.position;
+
+        // Rotate the object to face the moving direction
+        if (direction != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(direction.normalized);
+        }
+
         if (timeSinceLaunch >= flightDuration)
         {
             HitTarget();
@@ -102,6 +110,15 @@ public class BulletController : MonoBehaviour
         //Debug.Log("next post: " + nextPosition);
 
         transform.position = nextPosition;
+
+        Vector3 direction = nextPosition - transform.position;
+
+        // Rotate the object to face the moving direction
+        if (direction != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(direction.normalized);
+        }
+
 
         if (timeSinceLaunch >= flightDuration)
         {
