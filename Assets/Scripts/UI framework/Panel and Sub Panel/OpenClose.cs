@@ -27,9 +27,10 @@ public class OpenClose : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            foreach (GameObject panel in SubPanels)
+            for (int i = 0; i < panelStatus.Length; i++)
             {
-                panel.SetActive(false);
+                SubPanels[i].SetActive(false);
+                panelStatus[i] = false;
             }
         }
     }
@@ -64,5 +65,17 @@ public class OpenClose : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool isAllStateOff()
+    {
+        for (int i = 0; i < panelStatus.Length; i++)
+        {
+            if (panelStatus[i])
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
