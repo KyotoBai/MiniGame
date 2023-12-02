@@ -37,16 +37,29 @@ public class PlayerShootingController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(shootingKey))
+        {
+            shootingOn = !shootingOn;
+        }
+        if (!shootingOn)
+        {
+            playerController.weaponOn = false;
+            return;
+        }
+        playerController.weaponOn = true;
         Vector3 mousePos = GetSelectedMapPosition();
         // Debug.Log(mousePos);
         targetDirection = mousePos - transform.position;
         targetDirection.y = 0f;
         targetDirection.Normalize();
-        // transform.rotation = Quaternion.LookRotation(targetDirection) * Quaternion.Euler(0, -90, 0);
-        if (Input.GetKeyDown(bulletKey) || Input.GetKeyDown(projectileKey))
+
+        transform.rotation = Quaternion.LookRotation(targetDirection) * Quaternion.Euler(0, -90, 0);
+        /*if (Input.GetKeyDown(bulletKey) || Input.GetKeyDown(projectileKey))
         { playerController.stopMovement = true; } 
         else if (Input.GetKeyUp(bulletKey) || Input.GetKeyUp(projectileKey))
         { playerController.stopMovement = false; }
+        */
+
         if (Input.GetKey(bulletKey) && Time.time >= nextBulletTime) // Check for bullet cooldown
         {
             nextBulletTime = Time.time + bulletCooldown;
@@ -75,7 +88,7 @@ public class PlayerShootingController : MonoBehaviour
         bulletController.aoESize = bulletAoESize;
         bulletController.targetLayers = bulletTargetLayers;
 
-        transform.rotation = Quaternion.LookRotation(targetDirection) * Quaternion.Euler(0, -90, 0);
+        // transform.rotation = Quaternion.LookRotation(targetDirection) * Quaternion.Euler(0, -90, 0);
     }
 
     void FireProjectile()
