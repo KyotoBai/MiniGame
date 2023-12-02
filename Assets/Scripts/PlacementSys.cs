@@ -159,7 +159,6 @@ public class PlacementSys : MonoBehaviour
             projectileLauncher.enemyParent = enemyParent;
         }else
         {
-            Debug.Log("here");
             StraightLauncher straightLauncher = newGameObj.GetComponent<StraightLauncher>();
             straightLauncher.enemyParent = enemyParent;
         }

@@ -153,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0cd0f588a33063d4d9eb3f3079c069fb, type: 3}
       propertyPath: m_Name
-      value: enemy_ufoRedWeapon
+      value: Gun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cd0f588a33063d4d9eb3f3079c069fb, type: 3}

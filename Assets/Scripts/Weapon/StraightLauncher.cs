@@ -64,6 +64,8 @@ public class StraightLauncher : MonoBehaviour
             bulletController.aoESize = aoESize;
             bulletController.targetLayers = targetLayers;
             bulletController.targetVelocity = velocity;
+
+            transform.Find("Gun").rotation = bulletController.GetOrientation();
             // Adjust bullet controller target layers and other parameters as needed
         }
     }

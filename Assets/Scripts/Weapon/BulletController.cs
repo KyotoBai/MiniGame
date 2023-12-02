@@ -159,4 +159,10 @@ public class BulletController : MonoBehaviour
         }
         return targetNewPos;
     }
+
+    public Quaternion GetOrientation()
+    {
+        Quaternion lookDirc = Quaternion.LookRotation(startPosition - target);
+        return Quaternion.Euler(0, lookDirc.eulerAngles.y, 0);
+    }
 }
