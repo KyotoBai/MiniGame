@@ -17,8 +17,8 @@ public class TreeGenerator : MonoBehaviour
     private string layerName = "Default";
 
     public Transform groundTransform;
-    public float terrainWidth = 100f;
-    public float terrainHeight = 100f;
+    public float terrainWidth = 140f;
+    public float terrainHeight = 140f;
 
     public float collisionCheckRadius = 1.0f;
 
