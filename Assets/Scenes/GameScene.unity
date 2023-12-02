@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe21b9265b2b7a4daac68960bf4e458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 100
+  maxHitPoints: 1000
   currentHitPoints: 0
   healthBar: {fileID: 404954661}
 --- !u!54 &53821985
@@ -3353,15 +3353,15 @@ MonoBehaviour:
     m_Bits: 192
   bulletKey: 32
   projectileSpeed: 5
-  projectileDamage: 1000
+  projectileDamage: 100
   projectileAoESize: 5
   projectileCooldown: 5
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 5867569035586740050, guid: 6f6ac563f8018384fbfdbf1d3e61edc8, type: 3}
   projectileScale: 1
   projectileOffset: {x: 0, y: 0.5, z: 0}
   projectileTargetLayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 128
   projectileKey: 112
 --- !u!114 &943188004
 MonoBehaviour:

@@ -79,14 +79,9 @@ public class BulletController : MonoBehaviour
         timeSinceLaunch += Time.deltaTime;
         float timeRatio = timeSinceLaunch / flightDuration;
 
-        Vector3 horizontalPosition = Vector3.Lerp(new Vector3(startPosition.x, 0, startPosition.z),
-                                                  new Vector3(target.x, 0, target.z),
-                                                  timeRatio);
-
-        float deltaY = target.y - startPosition.y;
-        float parabolicFactor = -4 * deltaY * timeRatio * (1 - timeRatio); // Parabolic trajectory factor
-
-        Vector3 nextPosition = new Vector3(horizontalPosition.x, startPosition.y + deltaY * timeRatio + parabolicFactor, horizontalPosition.z);
+        Vector3 nextPosition = Vector3.Lerp(startPosition, target, timeRatio);
+        //Debug.Log("next post: " + nextPosition);
+        nextPosition.y += Mathf.Sin(timeRatio * Mathf.PI) * (flightDuration * speed * 0.1f); // Adjust the height factor as needed
 
         Vector3 tangent = nextPosition - transform.position;
         // Rotate the bullet to point in the direction of the tangent

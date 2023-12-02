@@ -83,7 +83,7 @@ public class ProjectileLauncher : MonoBehaviour
             {
                 float targetDistance = Vector3.Distance(transform.position, target);
                 float flightDuration = targetDistance / speed;
-                float timeSinceLaunch = Time.deltaTime * 12;
+                float timeSinceLaunch = Time.deltaTime * 5;
                 float timeRatio = timeSinceLaunch / flightDuration;
                 Vector3 nextPosition = Vector3.Lerp(transform.position, target, timeRatio);
                 nextPosition.y += Mathf.Sin(timeRatio * Mathf.PI) * (flightDuration * speed * 0.25f);
