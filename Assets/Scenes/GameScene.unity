@@ -2949,8 +2949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb172a7467cbc248a646feb2f2e8bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  projectilePrefab: {fileID: 0}
   enemyParent: {fileID: 617539336}
   sceneCam: {fileID: 866631707}
   groundLayermask:
@@ -2959,6 +2957,8 @@ MonoBehaviour:
   bulletSpeed: 15
   bulletDamage: 10
   bulletAoESize: 0
+  bulletPrefab: {fileID: 8237492964454176954, guid: cb8a3c0f43bd5914fa1a75822dd5a745, type: 3}
+  bulletScale: 1
   bulletTargetLayers:
     serializedVersion: 2
     m_Bits: 192
@@ -2967,6 +2967,8 @@ MonoBehaviour:
   projectileSpeed: 5
   projectileDamage: 1000
   projectileAoESize: 5
+  projectilePrefab: {fileID: 0}
+  projectileScale: 1
   projectileTargetLayers:
     serializedVersion: 2
     m_Bits: 192

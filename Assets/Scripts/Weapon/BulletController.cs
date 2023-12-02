@@ -62,7 +62,10 @@ public class BulletController : MonoBehaviour
     void MoveStraight()
     {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        //transform.rotation = Quaternion.Euler(90, 0, 0);
+        Vector3 direction = target - startPosition;
+        direction.y = 0;
+        direction.Normalize();
+        transform.rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(90, 0, 0);
         if (Vector3.Distance(transform.position, target) < 0.1f)
         {
             HitTarget();
