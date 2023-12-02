@@ -2933,6 +2933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663768de4840f074da43069a83865b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopMovement: 0
   weaponOn: 0
   speed: 3
   rotationSpeed: 720
@@ -4138,11 +4139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
