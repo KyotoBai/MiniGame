@@ -37,7 +37,7 @@ public class TreeGenerator : MonoBehaviour
             float zPos = Random.Range(-(terrainHeight / 2), terrainHeight/2);
             Vector3 treePosition = new Vector3(xPos, 0, zPos); // Assuming terrain is at y = 0
 
-            Collider[] hitColliders = Physics.OverlapSphere(treePosition, collisionCheckRadius, LayerMask.GetMask("PlacementObject"));
+            Collider[] hitColliders = Physics.OverlapSphere(treePosition, collisionCheckRadius, LayerMask.GetMask(layerName));
 
             if (hitColliders.Length == 0) // No collision, safe to place tree
             {

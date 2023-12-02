@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe21b9265b2b7a4daac68960bf4e458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 1000
+  maxHitPoints: 100000
   currentHitPoints: 0
 --- !u!54 &53821985
 Rigidbody:
@@ -4057,6 +4057,7 @@ MonoBehaviour:
   numberOfTrees: 500
   treeScaleRange: {x: 0.8, y: 2}
   treeHeightRange: {x: 0.5, y: 2}
+  layerName: Default
   groundTransform: {fileID: 151580500}
   terrainWidth: 100
   terrainHeight: 100
@@ -4194,7 +4195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e9385b4201a3b4b8c1cef3b5a4b0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialCoinsCount: 500
+  initialCoinsCount: 500000000
 --- !u!4 &1502225219
 Transform:
   m_ObjectHideFlags: 0

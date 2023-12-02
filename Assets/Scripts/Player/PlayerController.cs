@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool weaponOn = false;
     public float speed = 5.0f;
     public float rotationSpeed = 720.0f; // Degrees per second
     public float acceleration = 1.0f;
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
         // Rotate towards the target direction
         Vector3 adjustedDirection = new Vector3(-targetDirection.z, 0.0f, targetDirection.x);
-        if (targetDirection.magnitude > 0.01f)
+        if (!weaponOn && targetDirection.magnitude > 0.01f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(adjustedDirection);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);

@@ -3,8 +3,11 @@ using UnityEngine;
 public class PlayerShootingController : MonoBehaviour
 {
     public GameObject enemyParent;
+    public bool shootingOn = true;
     [SerializeField] private Camera sceneCam;
     [SerializeField] private LayerMask groundLayermask;
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private KeyCode shootingKey = KeyCode.None;
 
     [Header("Bullet Properties")]
     [SerializeField] private float bulletSpeed = 5f;
@@ -30,9 +33,25 @@ public class PlayerShootingController : MonoBehaviour
 
     private float nextBulletTime = 0f;
     private float nextProjectileTime = 0f;
+    private Vector3 targetDirection;
 
     void Update()
     {
+        if (Input.GetKeyDown(shootingKey))
+        {
+            shootingOn = !shootingOn;
+        }
+        if (!shootingOn)
+        {
+            playerController.weaponOn = false;
+            return;
+        }
+        Vector3 mousePos = GetSelectedMapPosition();
+        // Debug.Log(mousePos);
+        targetDirection = mousePos - transform.position;
+        targetDirection.y = 0f;
+        targetDirection.Normalize();
+        transform.rotation = Quaternion.LookRotation(targetDirection) * Quaternion.Euler(0, -90, 0);
         if (Input.GetKey(bulletKey) && Time.time >= nextBulletTime) // Check for bullet cooldown
         {
             nextBulletTime = Time.time + bulletCooldown;
@@ -53,11 +72,6 @@ public class PlayerShootingController : MonoBehaviour
         bullet.transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
         BulletController bulletController = bullet.AddComponent<BulletController>();
         bulletController.type = BulletController.BulletType.BulletPlayer;
-        Vector3 mousePos = GetSelectedMapPosition();
-        // Debug.Log(mousePos);
-        Vector3 targetDirection = mousePos - transform.position;
-        targetDirection.y = 0f;
-        targetDirection.Normalize();
         bullet.transform.LookAt(targetDirection);
         Vector3 targetPoint = transform.position + targetDirection * 10f;
         bulletController.target = targetPoint;
