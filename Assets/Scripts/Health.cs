@@ -24,7 +24,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHitPoints = maxHitPoints;
-        healthBar.SetMaxHealth(maxHitPoints);
+        //healthBar.SetMaxHealth(maxHitPoints);
     }
 
     void Update()
@@ -48,6 +48,6 @@ public class Health : MonoBehaviour
     {
         currentHitPoints -= damage;
         currentHitPoints = Mathf.Max(currentHitPoints, 0); // Prevent HP from going below 0
-        healthBar.SetHealth(currentHitPoints);
+        //healthBar.SetHealth(currentHitPoints);
     }
 }
