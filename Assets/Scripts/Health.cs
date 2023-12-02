@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Health : MonoBehaviour
 {
     [SerializeField] public int maxHitPoints = 10;
@@ -18,9 +19,12 @@ public class Health : MonoBehaviour
         get { return currentHitPoints; }
     }
 
+    public HealthBar healthBar;
+
     void Start()
     {
         currentHitPoints = maxHitPoints;
+        healthBar.SetMaxHealth(maxHitPoints);
     }
 
     void Update()
@@ -44,5 +48,6 @@ public class Health : MonoBehaviour
     {
         currentHitPoints -= damage;
         currentHitPoints = Mathf.Max(currentHitPoints, 0); // Prevent HP from going below 0
+        healthBar.SetHealth(currentHitPoints);
     }
 }
