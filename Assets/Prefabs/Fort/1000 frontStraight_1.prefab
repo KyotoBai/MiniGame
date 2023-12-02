@@ -84,6 +84,7 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 192
+  bulletOffset: {x: 0, y: 0.6, z: 0}
   gunObjectName: enemy_ufoRedWeapon
 --- !u!1001 &1909146989503913211
 PrefabInstance:

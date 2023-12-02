@@ -12,6 +12,7 @@ public class StraightLauncher : MonoBehaviour
     public GameObject enemyParent;
     public float fireInterval;
     public LayerMask targetLayers;
+    public Vector3 bulletOffset;
     public string gunObjectName;
 
     private float timeSinceLastFire;
@@ -55,7 +56,7 @@ public class StraightLauncher : MonoBehaviour
         if (nearestEnemy != null)
         {
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            bullet.transform.position = transform.position;
+            bullet.transform.position = transform.position + bulletOffset;
             BulletController bulletController = bullet.AddComponent<BulletController>();
             bullet.transform.LookAt(nearestEnemy.transform.position);
             bulletController.type = BulletController.BulletType.Straight;
