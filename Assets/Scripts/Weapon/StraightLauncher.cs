@@ -16,10 +16,12 @@ public class StraightLauncher : MonoBehaviour
     public string gunObjectName;
 
     private float timeSinceLastFire;
+    private GameObject gunObject = null;
 
     void Start()
     {
         timeSinceLastFire = 0f;
+        gunObject = transform.Find(gunObjectName).gameObject;
         StartCoroutine(FireRoutine());
     }
 
@@ -68,9 +70,13 @@ public class StraightLauncher : MonoBehaviour
             bulletController.targetLayers = targetLayers;
             bulletController.targetVelocity = velocity;
 
-            Vector3 direction = target - transform.position;
-            direction.Normalize();
-            transform.Find(gunObjectName).rotation = Quaternion.LookRotation(direction);
+            if (gunObject != null)
+            {
+                Transform gunObjectTransform = gunObject.transform;
+                Vector3 direction = target - transform.position;
+                direction.Normalize();
+                gunObjectTransform.rotation = Quaternion.LookRotation(direction);
+            }
             // Adjust bullet controller target layers and other parameters as needed
         }
     }
