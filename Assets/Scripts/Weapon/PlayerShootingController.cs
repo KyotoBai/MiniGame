@@ -10,20 +10,22 @@ public class PlayerShootingController : MonoBehaviour
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private int bulletDamage = 100;
     [SerializeField] private float bulletAoESize = 0f;
+    [SerializeField] private float bulletCooldown = 1f;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletScale = 1f;
+    [SerializeField] private Vector3 bulletOffset = Vector3.zero;
     [SerializeField] private LayerMask bulletTargetLayers;
-    [SerializeField] private float bulletCooldown = 1f; // Cooldown time in seconds for bullets
     [SerializeField] private KeyCode bulletKey = KeyCode.None;
 
     [Header("Projectile Properties")]
     [SerializeField] private float projectileSpeed = 5f;
     [SerializeField] private int projectileDamage = 100;
     [SerializeField] private float projectileAoESize = 0f;
+    [SerializeField] private float projectileCooldown = 2f;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float projectileScale = 1f;
+    [SerializeField] private Vector3 projectileOffset = Vector3.zero;
     [SerializeField] private LayerMask projectileTargetLayers;
-    [SerializeField] private float projectileCooldown = 2f; // Cooldown time in seconds for projectiles
     [SerializeField] private KeyCode projectileKey = KeyCode.None;
 
     private float nextBulletTime = 0f;
@@ -47,6 +49,7 @@ public class PlayerShootingController : MonoBehaviour
     void FireBullet()
     {
         GameObject bullet = InstantiateBullet(bulletPrefab);
+        bullet.transform.position += bulletOffset;
         bullet.transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
         BulletController bulletController = bullet.AddComponent<BulletController>();
         bulletController.type = BulletController.BulletType.BulletPlayer;
@@ -70,6 +73,7 @@ public class PlayerShootingController : MonoBehaviour
         if (nearestEnemy != null)
         {
             GameObject projectile = InstantiateBullet(projectilePrefab);
+            projectile.transform.position += projectileOffset;
             projectile.transform.localScale = new Vector3(projectileScale, projectileScale, projectileScale);
             BulletController bulletController = projectile.AddComponent<BulletController>();
             bulletController.type = BulletController.BulletType.Projectile;

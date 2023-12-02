@@ -2957,22 +2957,24 @@ MonoBehaviour:
   bulletSpeed: 15
   bulletDamage: 10
   bulletAoESize: 0
+  bulletCooldown: 0.1
   bulletPrefab: {fileID: 8237492964454176954, guid: cb8a3c0f43bd5914fa1a75822dd5a745, type: 3}
   bulletScale: 1
+  bulletOffset: {x: 0, y: 0.5, z: 0}
   bulletTargetLayers:
     serializedVersion: 2
     m_Bits: 192
-  bulletCooldown: 0.1
   bulletKey: 32
   projectileSpeed: 5
   projectileDamage: 1000
   projectileAoESize: 5
+  projectileCooldown: 5
   projectilePrefab: {fileID: 0}
   projectileScale: 1
+  projectileOffset: {x: 0, y: 0.5, z: 0}
   projectileTargetLayers:
     serializedVersion: 2
     m_Bits: 192
-  projectileCooldown: 5
   projectileKey: 112
 --- !u!114 &943188004
 MonoBehaviour:
