@@ -2933,6 +2933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663768de4840f074da43069a83865b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponOn: 0
   speed: 3
   rotationSpeed: 720
   acceleration: 3
@@ -2951,10 +2952,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyParent: {fileID: 617539336}
+  shootingOn: 1
   sceneCam: {fileID: 866631707}
   groundLayermask:
     serializedVersion: 2
     m_Bits: 256
+  playerController: {fileID: 943188002}
+  shootingKey: 13
   bulletSpeed: 15
   bulletDamage: 10
   bulletAoESize: 0
@@ -4057,7 +4061,7 @@ MonoBehaviour:
   numberOfTrees: 500
   treeScaleRange: {x: 0.8, y: 2}
   treeHeightRange: {x: 0.5, y: 2}
-  layerName: Default
+  layerName: PlacementObject
   groundTransform: {fileID: 151580500}
   terrainWidth: 100
   terrainHeight: 100

@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
         // Rotate towards the target direction
         Vector3 adjustedDirection = new Vector3(-targetDirection.z, 0.0f, targetDirection.x);
-        if (!weaponOn && targetDirection.magnitude > 0.01f)
+        if (targetDirection.magnitude > 0.01f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(adjustedDirection);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
