@@ -22,7 +22,11 @@ public class StraightLauncher : MonoBehaviour
     void Start()
     {
         timeSinceLastFire = 0f;
-        gunObject = transform.Find(gunObjectName).gameObject;
+        Transform gunTransform = transform.Find(gunObjectName);
+        if (gunTransform != null )
+        {
+            gunObject = gunTransform.gameObject;
+        }
         StartCoroutine(FireRoutine());
     }
 

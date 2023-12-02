@@ -23,13 +23,15 @@ public class BulletController : MonoBehaviour
         aoEHandler = new AoEHandler(targetLayers);
         startPosition = transform.position;
 
-        if (type == BulletType.Projectile || type == BulletType.Straight)
+        if (type == BulletType.Straight)
         {
-
             target = Prediction(speed, startPosition, target, targetVelocity, 1);
-
-            float targetDistance = Vector3.Distance(startPosition, target);
-            flightDuration = targetDistance / speed;
+        }
+        float targetDistance = Vector3.Distance(startPosition, target);
+        flightDuration = targetDistance / speed;
+        if (type == BulletType.Projectile)
+        {
+            target += flightDuration * targetVelocity;
         }
 
         Collider collider = GetComponent<Collider>();
@@ -77,33 +79,39 @@ public class BulletController : MonoBehaviour
         timeSinceLaunch += Time.deltaTime;
         float timeRatio = timeSinceLaunch / flightDuration;
 
-        Vector3 nextPosition = Vector3.Lerp(startPosition, target, timeRatio);
-        //Debug.Log("next post: " + nextPosition);
-        nextPosition.y += Mathf.Sin(timeRatio * Mathf.PI) * (flightDuration * speed * 0.25f); // Adjust the height factor as needed
+        Vector3 horizontalPosition = Vector3.Lerp(new Vector3(startPosition.x, 0, startPosition.z),
+                                                  new Vector3(target.x, 0, target.z),
+                                                  timeRatio);
+
+        float deltaY = target.y - startPosition.y;
+        float parabolicFactor = -4 * deltaY * timeRatio * (1 - timeRatio); // Parabolic trajectory factor
+
+        Vector3 nextPosition = new Vector3(horizontalPosition.x, startPosition.y + deltaY * timeRatio + parabolicFactor, horizontalPosition.z);
 
         Vector3 tangent = nextPosition - transform.position;
-
         // Rotate the bullet to point in the direction of the tangent
         if (tangent != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(tangent.normalized) * Quaternion.Euler(90, 0, 0);
         }
 
+        // Set the position
         transform.position = nextPosition;
 
+        // Calculate and set the rotation to face the moving direction
         Vector3 direction = nextPosition - transform.position;
-
-        // Rotate the object to face the moving direction
         if (direction != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(direction.normalized);
         }
 
+        // Check if the projectile has reached its destination
         if (timeSinceLaunch >= flightDuration)
         {
             HitTarget();
         }
     }
+
 
     void MoveStraightLockTarget()
     {

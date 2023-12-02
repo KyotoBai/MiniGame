@@ -71,6 +71,7 @@ public class TreeGenerator : MonoBehaviour
                     child.gameObject.layer = LayerMask.NameToLayer(layerName);
                 }
                 // newTree.AddComponent<CapsuleCollider>();
+                newTree.AddComponent<Health>();
 
 
                 treesPlaced++;

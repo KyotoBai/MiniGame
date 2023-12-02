@@ -22,8 +22,6 @@ public class PlayerController : MonoBehaviour
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-        Debug.Log(moveHorizontal);
-        Debug.Log(moveVertical);
         bool isMovingInput = moveHorizontal != 0 || moveVertical != 0;
 
         // Determine the target direction based on input
@@ -65,8 +63,6 @@ public class PlayerController : MonoBehaviour
 
         // Set the direction of current velocity to match the character's forward direction
         currentVelocity = targetDirection * currentSpeed;
-
-        Debug.Log(currentVelocity);
 
         // Move the character
         transform.Translate(currentVelocity * Time.deltaTime, Space.World);

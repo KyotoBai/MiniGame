@@ -22,7 +22,12 @@ public class ProjectileLauncher : MonoBehaviour
     void Start()
     {
         timeSinceLastFire = 0f;
-        gunObject = transform.Find(gunObjectName).gameObject;
+        Transform gunTransform = transform.Find(gunObjectName);
+        if (gunTransform != null )
+        {
+            gunObject = gunTransform.gameObject;
+        }
+        
         StartCoroutine(FireRoutine());
     }
 
@@ -67,7 +72,11 @@ public class ProjectileLauncher : MonoBehaviour
             bulletController.damage = damage;
             bulletController.aoESize = aoESize;
             bulletController.targetLayers = targetLayers;
-            Vector3 velocity = nearestEnemy.GetComponent<NavMeshAgent>().velocity;
+            Vector3 velocity = Vector3.zero;
+            NavMeshAgent navMeshAgent = nearestEnemy.GetComponent<NavMeshAgent>();
+            if (navMeshAgent != null ) {
+                velocity = navMeshAgent.velocity;
+            }
             bulletController.targetVelocity = velocity;
 
             if (gunObject != null)
