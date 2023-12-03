@@ -10,10 +10,11 @@ public class GameMechanicsController : MonoBehaviour
     public event WaveEndHandler OnWaveEnd;
 
     [Header("Runtime Data")]
-    public float gameStartTime;
+    public float gameBeginTime;
     public bool isGameOver = false;
     public int wave = 0;
     public float waveStartTime = 0f;
+    public float waveEndTime = 0f;
     public float waveCountdown;
     public bool waveStarted = false;
 
@@ -21,6 +22,7 @@ public class GameMechanicsController : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject playerBase;
     [SerializeField] private GameEconomyManager gameEconomyManager;
+    [SerializeField] private List<float> waves = new List<float>();
     [SerializeField] private float timeBeforeWaves;
 
     private Health playerHealth;
@@ -45,13 +47,45 @@ public class GameMechanicsController : MonoBehaviour
         {
             playerBaseHealth.onHealthDepletedEvent += GameOver;
         }
-        gameStartTime = Time.time;
+        gameBeginTime = Time.unscaledTime;
+        waveEndTime = Time.unscaledTime;
+        waveCountdown = timeBeforeWaves;
+        waveStarted = false;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (wave >= waves.Count)
+        {
+            GameOver();
+        }
+
+        if (waveStarted)
+        {
+            float waveElapsed = Time.unscaledTime - waveStartTime;
+            float waveTime = waves[wave];
+            if (waveElapsed > waveTime)
+            {
+                // wave end
+                waveStarted = false;
+                wave += 1;
+                waveEndTime = Time.unscaledTime;
+                OnWaveEnd?.Invoke();
+            }
+            waveCountdown = waveTime - waveElapsed;
+        } else
+        {
+            // wave not started
+            waveCountdown = Time.unscaledTime - waveEndTime;
+            if (waveCountdown > timeBeforeWaves)
+            {
+                waveStarted = true;
+                waveStartTime = Time.unscaledTime;
+                OnWaveBegin?.Invoke();
+            }
+        }
         
     }
 
