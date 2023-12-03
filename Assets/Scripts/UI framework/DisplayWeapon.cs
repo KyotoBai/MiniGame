@@ -28,15 +28,26 @@ public class DisplayWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (curr != playerPrefabControll.getWeaponOnIndex())
+        if (playerPrefabControll.getDisplayOnOff())
+        {
+            if (curr != playerPrefabControll.getWeaponOnIndex())
+            {
+                foreach (Image img in imgs)
+                {
+                    img.gameObject.SetActive(false);
+                }
+
+                imgs[playerPrefabControll.getWeaponOnIndex()].gameObject.SetActive(true);
+                curr = playerPrefabControll.getWeaponOnIndex();
+            }
+        }
+        else
         {
             foreach (Image img in imgs)
             {
                 img.gameObject.SetActive(false);
             }
-
-            imgs[playerPrefabControll.getWeaponOnIndex()].gameObject.SetActive(true);
-            curr = playerPrefabControll.getWeaponOnIndex();
+            curr = -1;
         }
     }
 }
