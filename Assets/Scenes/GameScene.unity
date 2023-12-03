@@ -4230,7 +4230,7 @@ MonoBehaviour:
   maxHitPoints: 1000
   minimumAttackInterval: 1
   currentHitPoints: 0
-  useSound: 0
+  useSound: 1
   healthBar: {fileID: 0}
 --- !u!54 &943188005
 Rigidbody:

@@ -173,6 +173,7 @@ MonoBehaviour:
   maxHitPoints: 100
   minimumAttackInterval: 0.1
   currentHitPoints: 0
+  useSound: 0
   healthBar: {fileID: 8694032016536891424}
 --- !u!54 &4006239670554313801
 Rigidbody:
@@ -231,7 +232,7 @@ MonoBehaviour:
   attackLayerMask:
     serializedVersion: 2
     m_Bits: 576
-  attackResponseTime: 2
+  attackResponseTime: 1
   attackInterval: 1
   damageValue: 10
   detectionDistance: 1

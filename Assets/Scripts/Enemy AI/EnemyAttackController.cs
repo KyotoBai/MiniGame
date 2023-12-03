@@ -46,6 +46,7 @@ public class EnemyAttackController : MonoBehaviour
                     foundTarget = false;
                     targetObject = null;
                     attackResponseTimer = attackResponseTime;
+                    attackTimer = attackInterval;
                     Debug.Log("Lost Target!");
                 }
 
@@ -55,8 +56,16 @@ public class EnemyAttackController : MonoBehaviour
                 foundTarget = true;
                 targetObject = objectsInAoE[0];
                 attackResponseTimer = attackResponseTime;
-                Debug.Log("New Target Found!" + targetObject);
+                attackTimer = attackInterval;
+                Debug.Log("New Target Found! " + targetObject);
             }
+        } else
+        {
+            foundTarget = false;
+            targetObject = null;
+            attackResponseTimer = attackResponseTime;
+            attackTimer = attackInterval;
+            Debug.Log("Lost Target!");
         }
 
         attackTimer -= Time.deltaTime;
@@ -72,6 +81,7 @@ public class EnemyAttackController : MonoBehaviour
     {
         if (foundTarget && targetObject != null)
         {
+            Debug.Log("Attack " + targetObject.name);
             Health healthComponent = targetObject.GetComponent<Health>(); 
             if (healthComponent != null)
             {
