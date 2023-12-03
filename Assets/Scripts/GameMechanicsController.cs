@@ -78,8 +78,8 @@ public class GameMechanicsController : MonoBehaviour
         } else
         {
             // wave not started
-            waveCountdown = Time.unscaledTime - waveEndTime;
-            if (waveCountdown > timeBeforeWaves)
+            waveCountdown = timeBeforeWaves - (Time.unscaledTime - waveEndTime);
+            if (waveCountdown <= 0f)
             {
                 waveStarted = true;
                 waveStartTime = Time.unscaledTime;
