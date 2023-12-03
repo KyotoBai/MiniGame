@@ -18,11 +18,13 @@ public class SceneController : MonoBehaviour
     }
     public void MainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Mainmenu");
     }
 
     public void PlayGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("GameScene");
     }
 
