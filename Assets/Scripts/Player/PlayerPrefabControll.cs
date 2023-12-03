@@ -15,18 +15,25 @@ public class PlayerPrefabControll : MonoBehaviour
 
     private bool[] weaponStatus;
     private int gunIndexTrue = 0; //record the current gun type that is active
-
+    private Transform placeGunHere;
     // Start is called before the first frame update
     void Start() 
     {
+        GameObject playerWithGun = GameObject.Find("Player With Gun");
+        
+        if (playerWithGun != null)
+        {
+            placeGunHere = playerWithGun.transform.Find("Place Gun Here");
+        }
+
         weaponStatus = new bool[gunPrefabs.Length];
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(false);
 
         for (int i = 0; i < gunPrefabs.Length; i++)
         {
-            GameObject newGun = Instantiate(gunPrefabs[i], transform.GetChild(1).GetChild(0).position, Quaternion.LookRotation(transform.forward));
-            newGun.transform.SetParent(transform.GetChild(1).GetChild(0), true);
+            GameObject newGun = Instantiate(gunPrefabs[i], placeGunHere.position, Quaternion.LookRotation(transform.forward));
+            newGun.transform.SetParent(placeGunHere, true);
             newGun.SetActive(false);
         }
     }
@@ -56,14 +63,14 @@ public class PlayerPrefabControll : MonoBehaviour
                 gunIndexTrue = 3;
             }
 
-            transform.GetChild(1).GetChild(0).GetChild(gunIndexTrue).gameObject.SetActive(true);
+            placeGunHere.GetChild(gunIndexTrue).gameObject.SetActive(true);
             weaponStatus[gunIndexTrue] = true;
-            shootingController.SetGunShooting(transform.GetChild(1).GetChild(0).GetChild(gunIndexTrue).GetComponent<GunShooting>());
+            shootingController.SetGunShooting(placeGunHere.GetChild(gunIndexTrue).GetComponent<GunShooting>());
             for (int j = 0; j < weaponStatus.Length; j++)
             {
                 if (j != gunIndexTrue)
                 {
-                    transform.GetChild(1).GetChild(0).GetChild(j).gameObject.SetActive(false);
+                    placeGunHere.GetChild(j).gameObject.SetActive(false);
                     weaponStatus[j] = false;
                 }
             }
@@ -85,5 +92,10 @@ public class PlayerPrefabControll : MonoBehaviour
     public int getWeaponOnIndex()
     {
         return gunIndexTrue;
+    }
+
+    public float getWeaponMovingDrag()
+    {
+        return placeGunHere.GetChild(getWeaponOnIndex()).GetComponent<GunShooting>().GetDrag();
     }
 }

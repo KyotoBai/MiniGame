@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BulletController : MonoBehaviour
 {
-    public enum BulletType { BulletPlayer, Projectile, Straight }
+    public enum BulletType { BulletPlayer, Projectile, Straight}
 
     [SerializeField] public BulletType type;
     [SerializeField] public Vector3 target;

@@ -45,17 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b013c4e304594748806dc9eaf01c98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootgun: 0
   projectile: 0
   bulletSpeed: 7
-  bulletDamage: 5
+  bulletDamage: 7
   bulletAoESize: 0
   bulletCooldown: 0.3
   bulletPrefab: {fileID: 8374406330189281543, guid: 6759845c01de32844bcbf32428a70be1, type: 3}
   bulletScale: 1
-  bulletOffset: {x: 0, y: 0, z: 0}
+  bulletOffset: {x: 0, y: 0.03, z: 0}
   bulletTargetLayers:
     serializedVersion: 2
     m_Bits: 128
+  drag: 1.2
 --- !u!1001 &8146371671663158147
 PrefabInstance:
   m_ObjectHideFlags: 0

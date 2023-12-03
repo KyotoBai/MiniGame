@@ -4,14 +4,22 @@ public class PlayerController : MonoBehaviour
 {
     public bool stopMovement = false;
     public bool weaponOn = false;
-    public float speed = 5.0f;
+    [Header("Player Moving Properties")]
+    [Tooltip("vetcor.x is moving speed when weapon OFF, vetcor.y is moving speed when weapon ON")]
+    public Vector2 speedTwoType = new Vector2(3f, 1.5f);
     public float rotationSpeed = 720.0f; // Degrees per second
-    public float acceleration = 1.0f;
-    public float deceleration = 1.0f;
+    public Vector2 accelerationTwoType = new Vector2(1f, 1.2f);
+    public Vector2 decelerationTwoType = new Vector2(0.6f, 0.8f);
     public float stopAngle = 5.0f; // Angle threshold to start moving
+
+    public PlayerPrefabControll playerPrefabControl;
 
     private Vector3 currentVelocity;
     private Vector3 targetDirection;
+    private float speed;
+    private float acceleration;
+    private float deceleration;
+    private float drag;
 
     void Update()
     {
@@ -45,7 +53,18 @@ public class PlayerController : MonoBehaviour
 
         if (weaponOn)
         {
+            drag = playerPrefabControl.getWeaponMovingDrag();
+
             rotation = targetRotation;
+            speed = speedTwoType.y * drag;
+            acceleration = accelerationTwoType.y * drag;
+            deceleration = decelerationTwoType.y * drag;
+        }
+        else
+        {
+            speed = speedTwoType.x;
+            acceleration = accelerationTwoType.x;
+            deceleration = decelerationTwoType.x;
         }
 
         // Determine the target velocity

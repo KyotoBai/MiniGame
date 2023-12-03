@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9041143446986476750}
+  - component: {fileID: 1478643113387815119}
   m_Layer: 0
   m_Name: shotgun_parent
   m_TagString: Untagged
@@ -26,12 +27,37 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3790215148765835809}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1478643113387815119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375648672914742403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b013c4e304594748806dc9eaf01c98a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootgun: 1
+  projectile: 0
+  bulletSpeed: 5
+  bulletDamage: 20
+  bulletAoESize: 0
+  bulletCooldown: 1
+  bulletPrefab: {fileID: 4456393117273867614, guid: 43e92b6ba6be4bb48823a96e8f63aff8, type: 3}
+  bulletScale: 1
+  bulletOffset: {x: 0, y: 0.03, z: 0}
+  bulletTargetLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  drag: 0.852
 --- !u!1001 &3680344581691446730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45,15 +71,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3a4f2e21595e282429b24a869f75ef98, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8
+      value: 5.39
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3a4f2e21595e282429b24a869f75ef98, type: 3}
       propertyPath: m_LocalScale.y
-      value: 8
+      value: 5.39
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3a4f2e21595e282429b24a869f75ef98, type: 3}
       propertyPath: m_LocalScale.z
-      value: 8
+      value: 5.39
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3a4f2e21595e282429b24a869f75ef98, type: 3}
       propertyPath: m_LocalPosition.x
