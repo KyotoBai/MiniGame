@@ -47,8 +47,8 @@ public class GameMechanicsController : MonoBehaviour
         {
             playerBaseHealth.onHealthDepletedEvent += GameOver;
         }
-        gameBeginTime = Time.unscaledTime;
-        waveEndTime = Time.unscaledTime;
+        gameBeginTime = Time.time;
+        waveEndTime = Time.time;
         waveCountdown = timeBeforeWaves;
         waveStarted = false;
 
@@ -64,25 +64,25 @@ public class GameMechanicsController : MonoBehaviour
 
         if (waveStarted)
         {
-            float waveElapsed = Time.unscaledTime - waveStartTime;
+            float waveElapsed = Time.time - waveStartTime;
             float waveTime = waves[wave];
             if (waveElapsed > waveTime)
             {
                 // wave end
                 waveStarted = false;
                 wave += 1;
-                waveEndTime = Time.unscaledTime;
+                waveEndTime = Time.time;
                 OnWaveEnd?.Invoke();
             }
             waveCountdown = waveTime - waveElapsed;
         } else
         {
             // wave not started
-            waveCountdown = timeBeforeWaves - (Time.unscaledTime - waveEndTime);
+            waveCountdown = timeBeforeWaves - (Time.time - waveEndTime);
             if (waveCountdown <= 0f)
             {
                 waveStarted = true;
-                waveStartTime = Time.unscaledTime;
+                waveStartTime = Time.time;
                 OnWaveBegin?.Invoke();
             }
         }
