@@ -36,7 +36,6 @@ public class PlayerPrefabControll : MonoBehaviour
     {
         if (shootingController.shootingOn == true)
         {
-         
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(true);
 
@@ -76,5 +75,15 @@ public class PlayerPrefabControll : MonoBehaviour
             transform.GetChild(1).gameObject.SetActive(false);
             
         }
+    }
+
+    public bool getDisplayOnOff()
+    {
+        return shootingController.shootingOn;
+    }
+
+    public int getWeaponOnIndex()
+    {
+        return gunIndexTrue;
     }
 }
