@@ -60,7 +60,7 @@ public class AIgenerator : MonoBehaviour
                 newEnemy.transform.SetParent(enemyNullObj, true);
 
                 //Debug.Log(newEnemy.transform.GetChild(6));
-                newEnemy.transform.GetChild(6).GetComponent<FaceCam>().Cam = HealthBarCamera;
+                newEnemy.transform.GetComponentInChildren<FaceCam>().Cam = HealthBarCamera;
 
                 newEnemy.GetComponent<EnemyMove>().target = Player;
 
