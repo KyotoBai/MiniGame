@@ -53,7 +53,10 @@ public class AoEHandler
             }
             if (obj != null)
             {
-                affectedObjects.Add(obj);
+                if (!affectedObjects.Contains(obj))
+                {
+                    affectedObjects.Add(obj);
+                }
             }
         }
 
