@@ -22,6 +22,7 @@ public class PlayerShootingController : MonoBehaviour
     [SerializeField] private KeyCode bulletKey = KeyCode.None;
 
     [Header("Projectile Properties")]
+
     [SerializeField] private float projectileSpeed = 5f;
     [SerializeField] private int projectileDamage = 100;
     [SerializeField] private float projectileAoESize = 0f;
