@@ -7,6 +7,7 @@ public class PlayerShootingController : MonoBehaviour
     [SerializeField] private Camera sceneCam;
     [SerializeField] private LayerMask groundLayermask;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private PlayerPrefabControll playerPrefabControll;
     [SerializeField] private KeyCode shootingKey = KeyCode.None;
 
     /*
@@ -22,7 +23,6 @@ public class PlayerShootingController : MonoBehaviour
     [SerializeField] private KeyCode bulletKey = KeyCode.None;
 
     [Header("Projectile Properties")]
-
     [SerializeField] private float projectileSpeed = 5f;
     [SerializeField] private int projectileDamage = 100;
     [SerializeField] private float projectileAoESize = 0f;
@@ -38,6 +38,17 @@ public class PlayerShootingController : MonoBehaviour
     private float nextBulletTime = 0f;
     private float nextProjectileTime = 0f;
     private Vector3 targetDirection;
+    private Transform placeGunHere;
+
+    void Start()
+    {
+        GameObject playerWithGun = GameObject.Find("Player With Gun");
+
+        if (playerWithGun != null)
+        {
+            placeGunHere = playerWithGun.transform.Find("Place Gun Here");
+        }
+    }
 
     void Update()
     {
@@ -69,6 +80,8 @@ public class PlayerShootingController : MonoBehaviour
             nextBulletTime = Time.time + GunShooting.GetCoolDown();
             //FireBullet();
             GunShooting.Fire(targetDirection);
+            //weaponPrefabParent.GetComponentInChildren<>
+            placeGunHere.GetChild(playerPrefabControll.getWeaponOnIndex()).GetComponent<AudioSource>().Play();
         }
 
         if (Input.GetKeyDown(projectileKey) && Time.time >= nextProjectileTime) // Check for projectile cooldown

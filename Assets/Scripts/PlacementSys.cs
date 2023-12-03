@@ -58,6 +58,20 @@ public class PlacementSys : MonoBehaviour
     [SerializeField]
     private GameObject enemyParent = null;
 
+    [SerializeField]
+    private GameObject enemyEnemyParent = null;
+
+    [Header("Sound file")]
+    [SerializeField]
+    private AudioSource PlacementAudio;
+    [SerializeField]
+    private AudioSource DestroyAudio;
+    [SerializeField]
+    private AudioSource RotateAudio;
+    [SerializeField]
+    private AudioSource WrongPlaceAudio;
+
+
     public void StartPlacement(int ID)
     {
         StopPlacement();
@@ -174,6 +188,7 @@ public class PlacementSys : MonoBehaviour
         obstacle.carving = true;***/
 
         newGameObj.transform.SetParent(groundTransform, true);
+        PlacementAudio.Play();
 
     }
 
@@ -206,10 +221,16 @@ public class PlacementSys : MonoBehaviour
             }
             renderer.materials = materials;
         }
-        
+
+        if (Input.GetMouseButtonDown(0) && !canPlace)
+        {
+            WrongPlaceAudio.Play();
+            return;
+        }
         if (Input.GetKeyDown(rotationKeyPress))
         {
             RotateHint(cellCenterInWorld, 90);
+            RotateAudio.Play();
         }
         if (Input.GetKeyDown(levelUpKeyPress))
         {
@@ -241,6 +262,7 @@ public class PlacementSys : MonoBehaviour
                         }
                     }
                     economyManager.AddCoins(1);
+                    DestroyAudio.Play();
                 }
             }
         }

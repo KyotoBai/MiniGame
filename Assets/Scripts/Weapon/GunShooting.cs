@@ -97,6 +97,8 @@ public class GunShooting : MonoBehaviour
                 bulletController.targetLayers = bulletTargetLayers;
             }
         }
+
+        
     }
 
     GameObject InstantiateBullet(GameObject prefab)
