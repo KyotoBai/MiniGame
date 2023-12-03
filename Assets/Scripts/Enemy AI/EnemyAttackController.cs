@@ -55,7 +55,7 @@ public class EnemyAttackController : MonoBehaviour
                 foundTarget = true;
                 targetObject = objectsInAoE[0];
                 attackResponseTimer = attackResponseTime;
-                Debug.Log("New Target Found!");
+                Debug.Log("New Target Found!" + targetObject);
             }
         }
 
@@ -70,9 +70,9 @@ public class EnemyAttackController : MonoBehaviour
 
     private void PerformAttack()
     {
-        if (foundTarget)
+        if (foundTarget && targetObject != null)
         {
-            Health healthComponent = targetObject?.GetComponent<Health>();
+            Health healthComponent = targetObject.GetComponent<Health>(); 
             if (healthComponent != null)
             {
                 healthComponent.TakeDamage(damageValue, transform.forward, knockbackForce);
