@@ -6,7 +6,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] public int maxHitPoints = 10;
-    [SerializeField] public float minimumAttackInterval = 0.1f;
+    [SerializeField] public float minimumAttackInterval = 0.5f;
     public int currentHitPoints;
 
     // Updated event name for clarity
@@ -15,11 +15,13 @@ public class Health : MonoBehaviour
     // Event declaration using the new name
     public event OnHealthDepleted onHealthDepletedEvent;
 
+
     // Rigidbody of the GameObject
     private Rigidbody rb;
 
     // last attack time
     private float lastAttackTime;
+    public bool useSound = false;
 
     public int CurrentHitPoints
     {
@@ -64,10 +66,18 @@ public class Health : MonoBehaviour
         }
         lastAttackTime = Time.time;
         currentHitPoints -= damage;
+        if (currentHitPoints > 0 && useSound)
+        {
+            if (transform.GetComponent<AudioSource>() != null)
+            {
+                transform.GetComponent<AudioSource>().Play();
+            }
+        }
         currentHitPoints = Mathf.Max(currentHitPoints, 0); // Prevent HP from going below 0
+        
         if (healthBar != null)
         {
-           healthBar.SetHealth(currentHitPoints);
+            healthBar.SetHealth(currentHitPoints);
         }
     }
 
