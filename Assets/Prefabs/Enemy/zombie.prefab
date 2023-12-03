@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitPoints: 100
+  minimumAttackInterval: 0.1
   currentHitPoints: 0
   healthBar: {fileID: 8694032016536891424}
 --- !u!54 &4006239670554313801
@@ -234,6 +235,7 @@ MonoBehaviour:
   attackInterval: 1
   damageValue: 10
   detectionDistance: 1
+  knockbackForce: 50
 --- !u!1 &1636523041872162574
 GameObject:
   m_ObjectHideFlags: 0

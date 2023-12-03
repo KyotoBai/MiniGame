@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class EnemyAttackController : MonoBehaviour
     [SerializeField] private float attackInterval = 1f;     // Time between each attack
     [SerializeField] private int damageValue = 10;          // Damage value to apply
     [SerializeField] private float detectionDistance = 1f;  // Distance in front of the enemy for AoE
+    [SerializeField] private float knockbackForce = 0;      // Knockback force
 
     private AoEHandler aoeHandler; // Reference to AoEHandler
     private float attackResponseTimer;
@@ -30,26 +32,30 @@ public class EnemyAttackController : MonoBehaviour
     {
         Vector3 aoeCenter = transform.position + transform.forward * detectionDistance;
         List<GameObject> objectsInAoE = aoeHandler.GetObjectsInSphereAoE(aoeCenter, detectionRadius);
-
-        if (foundTarget)
+        if (objectsInAoE.Count > 0)
         {
-            if (objectsInAoE.Contains(targetObject))
+            if (foundTarget)
             {
-                attackResponseTimer -= Time.deltaTime;
-            } else
-            {
-                foundTarget = false;
-                targetObject = null;
-                attackResponseTimer = attackResponseTime;
+
+                if (objectsInAoE.Contains(targetObject))
+                {
+                    attackResponseTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    foundTarget = false;
+                    targetObject = null;
+                    attackResponseTimer = attackResponseTime;
+                    Debug.Log("Lost Target!");
+                }
+
             }
-
-        } else
-        {
-            if (objectsInAoE.Count > 0)
+            else
             {
                 foundTarget = true;
                 targetObject = objectsInAoE[0];
                 attackResponseTimer = attackResponseTime;
+                Debug.Log("New Target Found!");
             }
         }
 
@@ -66,10 +72,10 @@ public class EnemyAttackController : MonoBehaviour
     {
         if (foundTarget)
         {
-            Health healthComponent = targetObject.GetComponent<Health>();
+            Health healthComponent = targetObject?.GetComponent<Health>();
             if (healthComponent != null)
             {
-                healthComponent.TakeDamage(damageValue);
+                healthComponent.TakeDamage(damageValue, transform.forward, knockbackForce);
             }
         }
         
