@@ -9,6 +9,7 @@ public class PlayerShootingController : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private KeyCode shootingKey = KeyCode.None;
 
+    /*
     [Header("Bullet Properties")]
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private int bulletDamage = 100;
@@ -17,7 +18,7 @@ public class PlayerShootingController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletScale = 1f;
     [SerializeField] private Vector3 bulletOffset = Vector3.zero;
-    [SerializeField] private LayerMask bulletTargetLayers;
+    [SerializeField] private LayerMask bulletTargetLayers;*/
     [SerializeField] private KeyCode bulletKey = KeyCode.None;
 
     [Header("Projectile Properties")]
@@ -31,6 +32,8 @@ public class PlayerShootingController : MonoBehaviour
     [SerializeField] private LayerMask projectileTargetLayers;
     [SerializeField] private KeyCode projectileKey = KeyCode.None;
 
+    private GunShooting GunShooting;
+    private GunShooting throwing;
     private float nextBulletTime = 0f;
     private float nextProjectileTime = 0f;
     private Vector3 targetDirection;
@@ -62,17 +65,36 @@ public class PlayerShootingController : MonoBehaviour
 
         if (Input.GetKey(bulletKey) && Time.time >= nextBulletTime) // Check for bullet cooldown
         {
-            nextBulletTime = Time.time + bulletCooldown;
-            FireBullet();
+            nextBulletTime = Time.time + GunShooting.GetCoolDown();
+            //FireBullet();
+            GunShooting.Fire(targetDirection);
         }
 
         if (Input.GetKeyDown(projectileKey) && Time.time >= nextProjectileTime) // Check for projectile cooldown
         {
             nextProjectileTime = Time.time + projectileCooldown;
             FireProjectile();
+            
         }
     }
 
+    public void SetGunShooting(GunShooting gs)
+    {
+        GunShooting = gs;
+    }
+
+    public void SetThrowing(GunShooting gs)
+    {
+        throwing = gs;
+    }
+
+
+    public KeyCode GetProjectionKey()
+    {
+        return projectileKey;
+    }
+
+    /*
     void FireBullet()
     {
         GameObject bullet = InstantiateBullet(bulletPrefab);
@@ -89,8 +111,9 @@ public class PlayerShootingController : MonoBehaviour
         bulletController.targetLayers = bulletTargetLayers;
 
         // transform.rotation = Quaternion.LookRotation(targetDirection) * Quaternion.Euler(0, -90, 0);
-    }
+    }*/
 
+    
     void FireProjectile()
     {
         GameObject nearestEnemy = FindNearestEnemy();
@@ -128,7 +151,7 @@ public class PlayerShootingController : MonoBehaviour
         defaultBullet.transform.position = transform.position;
         return defaultBullet;
     }
-
+    
     GameObject FindNearestEnemy()
     {
         GameObject nearestEnemy = null;

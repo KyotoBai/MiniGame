@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3715645585153445162}
+  - component: {fileID: 2049553215526165888}
   m_Layer: 0
   m_Name: pistol_parent
   m_TagString: Untagged
@@ -32,6 +33,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2049553215526165888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6085556951121306911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b013c4e304594748806dc9eaf01c98a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: 0
+  bulletSpeed: 7
+  bulletDamage: 5
+  bulletAoESize: 0
+  bulletCooldown: 0.3
+  bulletPrefab: {fileID: 8374406330189281543, guid: 6759845c01de32844bcbf32428a70be1, type: 3}
+  bulletScale: 1
+  bulletOffset: {x: 0, y: 0, z: 0}
+  bulletTargetLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &8146371671663158147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45,15 +69,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3399c5e2bc8ce9b46b09b061f17bf3fa, type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3399c5e2bc8ce9b46b09b061f17bf3fa, type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3399c5e2bc8ce9b46b09b061f17bf3fa, type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3399c5e2bc8ce9b46b09b061f17bf3fa, type: 3}
       propertyPath: m_LocalPosition.x

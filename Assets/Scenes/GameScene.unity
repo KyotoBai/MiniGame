@@ -1096,7 +1096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab:
   - {fileID: 1304629969528322247, guid: 8ac2f9e6ea963904a93ae9003307e8bf, type: 3}
-  numberOfEnemyToAdd: 10
+  numberOfEnemyToAdd: 3
   generateCenter: {fileID: 349272542}
   generateRadius: 12
   AiLayer:
@@ -2962,29 +2962,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   playerController: {fileID: 943188002}
-  shootingKey: 13
-  bulletSpeed: 15
-  bulletDamage: 1
-  bulletAoESize: 0
-  bulletCooldown: 0.1
-  bulletPrefab: {fileID: 8237492964454176954, guid: cb8a3c0f43bd5914fa1a75822dd5a745, type: 3}
-  bulletScale: 1
-  bulletOffset: {x: 0, y: 0.5, z: 0}
-  bulletTargetLayers:
-    serializedVersion: 2
-    m_Bits: 192
+  shootingKey: 304
   bulletKey: 32
   projectileSpeed: 5
   projectileDamage: 100
   projectileAoESize: 5
   projectileCooldown: 5
-  projectilePrefab: {fileID: 5867569035586740050, guid: 6f6ac563f8018384fbfdbf1d3e61edc8, type: 3}
+  projectilePrefab: {fileID: 4663631016596507336, guid: 5db15b8b7ff35ec4cbc5989be721eb2b, type: 3}
   projectileScale: 1
   projectileOffset: {x: 0, y: 0.5, z: 0}
   projectileTargetLayers:
     serializedVersion: 2
     m_Bits: 128
-  projectileKey: 112
+  projectileKey: 9
 --- !u!114 &943188004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3028,7 +3018,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40463168eea04014da978954e1786159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunPrefabs: []
+  gunPrefabs:
+  - {fileID: 6085556951121306911, guid: d9d6949ff32a79c448e4a10de0f53636, type: 3}
+  - {fileID: 3191932205433390262, guid: 0eb10472c634fb7479a0b16a7553007f, type: 3}
   shootingController: {fileID: 943188003}
   playerController: {fileID: 943188002}
 --- !u!1 &977214458
