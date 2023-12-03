@@ -46,7 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitPoints: 10
+  minimumAttackInterval: 1
   currentHitPoints: 0
+  useSound: 0
+  healthBar: {fileID: 0}
 --- !u!1001 &1024576740196203053
 PrefabInstance:
   m_ObjectHideFlags: 0
