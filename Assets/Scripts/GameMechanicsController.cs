@@ -57,6 +57,10 @@ public class GameMechanicsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isGameOver)
+        {
+            Time.timeScale = 0;
+        }
         if (wave >= waves.Count)
         {
             GameOver();
@@ -91,6 +95,6 @@ public class GameMechanicsController : MonoBehaviour
 
     public void GameOver()
     {
-
+        isGameOver = true;
     }
 }

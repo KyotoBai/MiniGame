@@ -5562,20 +5562,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23d40d53770d124786a99f4752bb204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStartTime: 0
+  gameBeginTime: 0
   isGameOver: 0
   wave: 0
   waveStartTime: 0
+  waveEndTime: 0
   waveCountdown: 0
   waveStarted: 0
   player: {fileID: 943188000}
   playerBase: {fileID: 0}
   gameEconomyManager: {fileID: 0}
   waves:
-  - 100
-  - 200
-  - 100
-  timeBeforeWaves: 100
+  - 10
+  - 60
+  - 30
+  timeBeforeWaves: 10
 --- !u!4 &1445448414
 Transform:
   m_ObjectHideFlags: 0
