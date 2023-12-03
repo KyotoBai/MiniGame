@@ -2799,6 +2799,9 @@ MonoBehaviour:
   blurPanel: {fileID: 1779970397}
   textPopup: {fileID: 838365692}
   oc: {fileID: 1031370159}
+  componentList:
+  - {fileID: 1823429063}
+  - {fileID: 467918510}
 --- !u!1 &553463081
 GameObject:
   m_ObjectHideFlags: 0
@@ -5528,7 +5531,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1445448412
 GameObject:
@@ -5559,12 +5562,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23d40d53770d124786a99f4752bb204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStartTime: 0
+  isGameOver: 0
+  wave: 0
+  waveStartTime: 0
+  waveCountdown: 0
+  waveStarted: 0
   player: {fileID: 943188000}
   playerBase: {fileID: 0}
-  gameStartTime: 0
-  waveStartTime: 0
-  wave: 0
   gameEconomyManager: {fileID: 0}
+  timeBeforeWaves: 0
 --- !u!4 &1445448414
 Transform:
   m_ObjectHideFlags: 0
@@ -5578,7 +5585,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1451991968
 GameObject:
