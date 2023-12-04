@@ -23,9 +23,9 @@ public class WaveData
     public int wave_ID { get; private set; }
     [field: SerializeField]
     public int totalEnemy { get; private set;}
-    [field: SerializeField]
-    public float SpawnTimeInterval { get; private set; }
-    [field: SerializeField]
+    [field: SerializeField, Range(0f, 1f)]
+    public float ProbOfSettingBaseAsTarget { get; private set; }
+    [field: SerializeField, Range(1f, 10f)]
     public float Radius { get; private set; }
     
     [field: SerializeField]

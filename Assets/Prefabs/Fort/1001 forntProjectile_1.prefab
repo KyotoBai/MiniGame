@@ -161,7 +161,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitPoints: 100
+  minimumAttackInterval: 0.1
   currentHitPoints: 0
+  useSound: 0
   healthBar: {fileID: 0}
 --- !u!114 &3662027400699177647
 MonoBehaviour:
@@ -177,9 +179,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 919132149155446097, guid: 3e3af7d1618d973498c32353b320b87b, type: 3}
   bulletScale: 10
-  speed: 5
-  damage: 1
-  aoESize: 5
+  speed: 7
+  damage: 10
+  aoESize: 8
   maxRange: 10
   enemyParent: {fileID: 0}
   fireInterval: 1

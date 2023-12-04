@@ -62,7 +62,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitPoints: 100
+  minimumAttackInterval: 0.1
   currentHitPoints: 0
+  useSound: 0
   healthBar: {fileID: 0}
 --- !u!114 &-6814310348133979267
 MonoBehaviour:
@@ -77,8 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8237492964454176954, guid: cb8a3c0f43bd5914fa1a75822dd5a745, type: 3}
-  speed: 10
-  damage: 1
+  speed: 20
+  damage: 5
   aoESize: 1
   fireInterval: 0.1
   attackRange: 15

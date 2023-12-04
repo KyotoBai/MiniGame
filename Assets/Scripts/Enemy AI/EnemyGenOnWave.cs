@@ -54,6 +54,8 @@ public class EnemyGenOnWave : MonoBehaviour
 
         float r = wd.waveData[currentWaveIndex].Radius;
 
+        float probTargetBase = wd.waveData[currentWaveIndex].ProbOfSettingBaseAsTarget;
+
         int remainder;
         int numForEachParent;
         int subRemainder;
@@ -100,6 +102,8 @@ public class EnemyGenOnWave : MonoBehaviour
                 }
             }
 
+
+
             if (GenerateLocationParent[0].GetChild(i) != null)
             {
                 Transform subLocation1 = GenerateLocationParent[0].GetChild(i);
@@ -114,7 +118,15 @@ public class EnemyGenOnWave : MonoBehaviour
                 subLocation1.GetComponent<AIGenerator>().PlacementLayer = LayerMask.NameToLayer("PlacementObject");
                 subLocation1.GetComponent<AIGenerator>().HealthBarCamera = MainCamera;
                 subLocation1.GetComponent<AIGenerator>().enemyNullObj = PlaceAiHere;
-                subLocation1.GetComponent<AIGenerator>().target = Target[0]; // need change
+                if (Random.Range(0f, 1f) > probTargetBase)
+                {
+                    subLocation1.GetComponent<AIGenerator>().target = Target[0];
+                }
+                else
+                {
+                    subLocation1.GetComponent<AIGenerator>().target = Target[1];
+                }
+                
 
             }
             if (GenerateLocationParent.Length > 1)
@@ -134,7 +146,14 @@ public class EnemyGenOnWave : MonoBehaviour
                     subLocation2.GetComponent<AIGenerator>().PlacementLayer = LayerMask.NameToLayer("PlacementObject");
                     subLocation2.GetComponent<AIGenerator>().HealthBarCamera = MainCamera;
                     subLocation2.GetComponent<AIGenerator>().enemyNullObj = PlaceAiHere;
-                    subLocation2.GetComponent<AIGenerator>().target = Target[0]; // need change
+                    if (Random.Range(0f, 1f) > probTargetBase)
+                    {
+                        subLocation2.GetComponent<AIGenerator>().target = Target[0];
+                    }
+                    else
+                    {
+                        subLocation2.GetComponent<AIGenerator>().target = Target[1];
+                    }
                 }
             }
         }

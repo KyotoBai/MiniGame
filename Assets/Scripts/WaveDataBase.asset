@@ -16,18 +16,18 @@ MonoBehaviour:
   - name: First_Wave
     <wave_ID>k__BackingField: 0
     <totalEnemy>k__BackingField: 15
-    <SpawnTimeInterval>k__BackingField: 0
+    <ProbOfSettingBaseAsTarget>k__BackingField: 0.506
     <Radius>k__BackingField: 4
     <ememyPrefabs>k__BackingField: {fileID: 1304629969528322247, guid: 8ac2f9e6ea963904a93ae9003307e8bf, type: 3}
   - name: Second_Wave
     <wave_ID>k__BackingField: 1
     <totalEnemy>k__BackingField: 32
-    <SpawnTimeInterval>k__BackingField: 0
+    <ProbOfSettingBaseAsTarget>k__BackingField: 0.5
     <Radius>k__BackingField: 4
     <ememyPrefabs>k__BackingField: {fileID: 1304629969528322247, guid: 8ac2f9e6ea963904a93ae9003307e8bf, type: 3}
   - name: Third_Wave
     <wave_ID>k__BackingField: 2
     <totalEnemy>k__BackingField: 64
-    <SpawnTimeInterval>k__BackingField: 0
+    <ProbOfSettingBaseAsTarget>k__BackingField: 0.5
     <Radius>k__BackingField: 4
     <ememyPrefabs>k__BackingField: {fileID: 1304629969528322247, guid: 8ac2f9e6ea963904a93ae9003307e8bf, type: 3}
