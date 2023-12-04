@@ -6,10 +6,10 @@ using UnityEngine;
 public class EnemyAttackController : MonoBehaviour
 {
     [SerializeField] private LayerMask attackLayerMask;     // LayerMask for detecting objects
-    [SerializeField] private float attackResponseTime = 2f; // Time before start of attack
-    [SerializeField] private float attackInterval = 1f;     // Time between each attack
+    [SerializeField] private float attackResponseTime = 0.7f; // Time before start of attack
+    [SerializeField] private float attackInterval = 0.3f;     // Time between each attack
     [SerializeField] private int damageValue = 10;          // Damage value to apply
-    [SerializeField] private float detectionDistance = 1f;  // Distance in front of the enemy for AoE
+    [SerializeField] private float detectionDistance = 0.2f;  // Distance in front of the enemy for AoE
     [SerializeField] private float knockbackForce = 0;      // Knockback force
 
     private AoEHandler aoeHandler; // Reference to AoEHandler
