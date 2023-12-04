@@ -27,6 +27,7 @@ public class GameMechanicsController : MonoBehaviour
     [SerializeField] private float timeBeforeEverything;
     [SerializeField] private float timeBeforeWaves;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject enemyParent;
 
     private Health playerHealth;
     private Health playerBaseHealth;
@@ -97,6 +98,15 @@ public class GameMechanicsController : MonoBehaviour
             }
         }
         
+        // for the last wave, if all enemies are eliminated, game over
+        // check children of enemyParent
+        if (wave == waves.Count - 1 && waveStarted && Time.time - waveStartTime > 1f)
+        {
+            if (enemyParent.transform.childCount == 0)
+            {
+                GameOver();
+            }
+        }
     }
 
     public void GameOver()
