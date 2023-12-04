@@ -175,10 +175,10 @@ public class BulletController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject);
+        // Debug.Log(other.gameObject);
         if ((targetLayers & (1 << other.gameObject.layer)) != 0)
         {
-            Debug.Log("Collider Hit!!!");
+            Debug.Log("Collider Hit: " + other.gameObject.name);
             HitTarget();
         }
     }

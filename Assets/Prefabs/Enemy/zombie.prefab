@@ -233,7 +233,12 @@ MonoBehaviour:
   attackLayerMask:
     serializedVersion: 2
     m_Bits: 4672
-  attackResponseTime: 1
+  attackObjectParentNames:
+  - ObjPlayerAdd
+  - base
+  attackObjectNames:
+  - Character
+  attackResponseTime: 0.5
   attackInterval: 0
   damageValue: 10
   detectionDistance: 1
