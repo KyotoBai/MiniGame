@@ -115,6 +115,18 @@ public class GameMechanicsController : MonoBehaviour
         gameOverUI?.SetActive(true);
     }
 
+    public bool StartNextWave()
+    {
+        if (!isGameOver && !waveStarted)
+        {
+            waveStarted = true;
+            waveStartTime = Time.time;
+            OnWaveBegin?.Invoke();
+            return true;
+        }
+        return false;
+    }
+
    public void EnemyEliminated()
     {
         numEnemyEliminated += 1;
