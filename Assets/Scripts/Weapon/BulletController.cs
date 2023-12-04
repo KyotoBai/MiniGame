@@ -12,6 +12,7 @@ public class BulletController : MonoBehaviour
     [SerializeField] public float aoESize = 0;
     [SerializeField] public LayerMask targetLayers;
     public Vector3 targetVelocity;
+    public AudioSource projectileHitSound;
 
     private float timeSinceLaunch;
     private Vector3 startPosition;
@@ -113,6 +114,7 @@ public class BulletController : MonoBehaviour
         if (timeSinceLaunch >= flightDuration)
         {
             HitTarget();
+            projectileHitSound.Play();
         }
     }
 
@@ -152,6 +154,7 @@ public class BulletController : MonoBehaviour
 
     void HitTarget()
     {
+        
         Debug.Log("Target Hit!!!");
         if (aoESize <= 0)
         {

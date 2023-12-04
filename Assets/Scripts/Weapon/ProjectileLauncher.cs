@@ -15,6 +15,8 @@ public class ProjectileLauncher : MonoBehaviour
     public LayerMask targetLayers;
     public Vector3 bulletOffset;
     public string gunObjectName;
+    public AudioSource audioSourceShoot;
+    public AudioSource audioSourceHitProjectile;
 
     private float timeSinceLastFire;
     private GameObject gunObject = null;
@@ -72,6 +74,7 @@ public class ProjectileLauncher : MonoBehaviour
             bulletController.damage = damage;
             bulletController.aoESize = aoESize;
             bulletController.targetLayers = targetLayers;
+            bulletController.projectileHitSound = audioSourceHitProjectile;
             Vector3 velocity = Vector3.zero;
             NavMeshAgent navMeshAgent = nearestEnemy.GetComponent<NavMeshAgent>();
             if (navMeshAgent != null ) {
@@ -91,6 +94,7 @@ public class ProjectileLauncher : MonoBehaviour
                 Transform gunObjectTransform = gunObject.transform;
                 gunObjectTransform.rotation = Quaternion.LookRotation(tangent.normalized);
             }
+            audioSourceShoot.Play();
         }
     }
 

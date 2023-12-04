@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitPoints: 300
-  minimumAttackInterval: 0.1
+  minimumAttackInterval: 0.8
   currentHitPoints: 0
   useSound: 0
   healthBar: {fileID: 0}
