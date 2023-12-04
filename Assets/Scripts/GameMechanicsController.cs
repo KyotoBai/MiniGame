@@ -6,8 +6,10 @@ public class GameMechanicsController : MonoBehaviour
 {
     public delegate void WaveBeginHandler();
     public delegate void WaveEndHandler();
+    public delegate void GameOverHandler();
     public event WaveBeginHandler OnWaveBegin;
     public event WaveEndHandler OnWaveEnd;
+    public event GameOverHandler OnGameOver;
 
     [Header("Runtime Data")]
     public float gameBeginTime;
@@ -32,10 +34,9 @@ public class GameMechanicsController : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject enemyParent;
 
-
-
     private Health playerHealth;
     private Health playerBaseHealth;
+    private bool gameOverBroadcasted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -118,6 +119,11 @@ public class GameMechanicsController : MonoBehaviour
     {
         isGameOver = true;
         gameOverUI?.SetActive(true);
+        if (!gameOverBroadcasted)
+        {
+            OnGameOver?.Invoke();
+            gameOverBroadcasted = true;
+        }
     }
 
     public bool StartNextWave()
