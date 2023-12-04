@@ -20,14 +20,19 @@ public class GameMechanicsController : MonoBehaviour
     public int numEnemyEliminated = 0;
 
     [Header("Settings")]
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject playerBase;
-    [SerializeField] private GameEconomyManager gameEconomyManager;
     [SerializeField] private List<float> waves = new List<float>();
     [SerializeField] private float timeBeforeEverything;
     [SerializeField] private float timeBeforeWaves;
+    [SerializeField] private int coinsPerEnemyEliminated = 25;
+
+    [Header("Components")]
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject playerBase;
+    [SerializeField] private GameEconomyManager gameEconomyManager;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject enemyParent;
+
+
 
     private Health playerHealth;
     private Health playerBaseHealth;
@@ -130,5 +135,6 @@ public class GameMechanicsController : MonoBehaviour
    public void EnemyEliminated()
     {
         numEnemyEliminated += 1;
+        gameEconomyManager.AddCoins(coinsPerEnemyEliminated);
     }
 }

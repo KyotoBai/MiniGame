@@ -7,7 +7,7 @@ public class GameEconomyManager : MonoBehaviour
     [SerializeField] private int initialCoinsCount = 100;
 
     // Variable to store coins count
-    private int coinsCount;
+    [SerializeField] private int coinsCount;
 
     // Singleton instance for global access
     public static GameEconomyManager Instance { get; private set; }
