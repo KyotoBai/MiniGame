@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerPrefabControll playerPrefabControl;
     public LegMovementController LegMovementController;
+    public ArmMovementController armMovementController;
 
     private Vector3 currentVelocity;
     private Vector3 targetDirection;
@@ -94,13 +95,19 @@ public class PlayerController : MonoBehaviour
             {
                 audioSource.Play();
             }
-            LegMovementController.SetAngleFactor(Mathf.Abs(currentSpeed)/speed);
+            
+            LegMovementController.SetAngleFactor(Mathf.Abs(currentSpeed) / speed);
             LegMovementController.SetSpeed(speed);
-        } else
+            armMovementController.SetAngleFactor(Mathf.Abs(currentSpeed) / speed);
+            armMovementController.SetSpeed(speed);
+        } 
+        else
         {
             audioSource.Stop();
             LegMovementController.ResetLegs();
             LegMovementController.SetSpeed(0f);
+            armMovementController.ResetArms();
+            armMovementController.SetSpeed(0f);
         }
     }
 }

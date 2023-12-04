@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject textPopup; 
     public GameObject oc;
     public List<GameObject> componentList;
+    public AudioListener audioListener;
 
     private bool active = false;
 
@@ -17,15 +18,23 @@ public class PauseMenu : MonoBehaviour
         textPopup.SetActive(false);
         foreach (GameObject obj in componentList)
         {
-            obj.SetActive(active);
+            obj.SetActive(false);
         }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && oc.GetComponent<OpenClose>().isAllStateOff())
+        if (Input.GetKeyDown(KeyCode.Escape) && oc.GetComponent<OpenClose>().isAllStateOff() && componentList[2].GetComponent<UserManual>().isUserManualOn() == false)
         {
             TogglePauseMenu();
+            if (active)
+            {
+                AudioListener.pause = true;
+            }
+            else
+            {
+                AudioListener.pause = false;
+            }
         }
     }
 
@@ -40,5 +49,6 @@ public class PauseMenu : MonoBehaviour
         }
         
         Time.timeScale = blurPanel.activeSelf ? 0 : 1;
+        
     }
 }

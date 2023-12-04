@@ -35,6 +35,7 @@ public class EnemyMove : MonoBehaviour
         else if (path.status == NavMeshPathStatus.PathPartial)
         {
             MoveToLastReachablePoint();
+            
         }
     }
 
