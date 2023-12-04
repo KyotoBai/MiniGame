@@ -7,8 +7,10 @@ using static UnityEngine.Rendering.DebugUI;
 public class OpenClose : MonoBehaviour
 {
     public GameObject parentPanel;
+    public AudioSource audioSource;
     private GameObject[] SubPanels;
     private bool[] panelStatus;
+    
 
     public void Start()
     {
@@ -50,12 +52,13 @@ public class OpenClose : MonoBehaviour
             {
                 panelStatus[j] = false;
             }
+            audioSource.Play();
         }
         else
         {
             SubPanels[i].SetActive(true);
             panelStatus[i] = true;
-            
+
             for (int j = 0; j < panelStatus.Length; j++)
             {
                 if (j != i)
@@ -64,6 +67,8 @@ public class OpenClose : MonoBehaviour
                     SubPanels[j].SetActive(false);
                 }
             }
+
+            audioSource.Play();
         }
     }
 

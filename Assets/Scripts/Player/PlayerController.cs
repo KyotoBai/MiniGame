@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 accelerationTwoType = new Vector2(1f, 1.2f);
     public Vector2 decelerationTwoType = new Vector2(0.6f, 0.8f);
     public float stopAngle = 5.0f; // Angle threshold to start moving
+    public AudioSource audioSource;
 
     public PlayerPrefabControll playerPrefabControl;
     public LegMovementController LegMovementController;
@@ -89,10 +90,15 @@ public class PlayerController : MonoBehaviour
 
         if (isMovingInput)
         {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
             LegMovementController.SetAngleFactor(Mathf.Abs(currentSpeed)/speed);
             LegMovementController.SetSpeed(speed);
         } else
         {
+            audioSource.Stop();
             LegMovementController.ResetLegs();
             LegMovementController.SetSpeed(0f);
         }
