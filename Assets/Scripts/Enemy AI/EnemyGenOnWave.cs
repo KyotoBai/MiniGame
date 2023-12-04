@@ -50,22 +50,37 @@ public class EnemyGenOnWave : MonoBehaviour
         int totalAiNeeded = wd.waveData[currentWaveIndex].totalEnemy;
 
         // get the prefab
-        GameObject prefab = wd.waveData[currentWaveIndex].ememyPrefabs[0];
+        GameObject prefab = wd.waveData[currentWaveIndex].ememyPrefabs;
 
         float r = wd.waveData[currentWaveIndex].Radius;
 
-        // save the remainder
-        int remainder = totalAiNeeded % GenerateLocationParent.Length;
-        // this give us the total number that each parent need generates
-        int numForEachParent = (totalAiNeeded - remainder) / 2;
-        // each parent have 4 sub location
-        int subRemainder= numForEachParent % 4;
-        // get each number of AI subloaction need generate
-        int numForEachSubLoaction = (numForEachParent - subRemainder) / 4;
-        // get all remainder together
-        remainder += subRemainder;
+        int remainder;
+        int numForEachParent;
+        int subRemainder;
+        int numForEachSubLoaction;
 
-        
+        if (GenerateLocationParent.Length == 1)
+        {
+            remainder = 0;
+            subRemainder = totalAiNeeded % 4;
+            numForEachSubLoaction = totalAiNeeded / 4;
+            remainder += subRemainder;
+        }
+        else
+        {
+            // save the remainder
+            remainder = totalAiNeeded % GenerateLocationParent.Length;
+            // this give us the total number that each parent need generates
+            numForEachParent = (totalAiNeeded - remainder) / 2;
+            // each parent have 4 sub location
+            subRemainder = numForEachParent % 4;
+            // get each number of AI subloaction need generate
+            numForEachSubLoaction = (numForEachParent - subRemainder) / 4;
+            // get all remainder together
+
+            remainder += (subRemainder*2);
+        }
+
 
         for (int i = 0; i < 4; i++)
         {
@@ -76,7 +91,7 @@ public class EnemyGenOnWave : MonoBehaviour
                 if (remainder % 2 == 0)
                 {
                     num1 += (remainder / 2);
-                    num1 += (remainder / 2);
+                    num2 += (remainder / 2);
                 }
                 else
                 {
@@ -84,6 +99,7 @@ public class EnemyGenOnWave : MonoBehaviour
                     num2 += (remainder + 1) / 2;
                 }
             }
+
             if (GenerateLocationParent[0].GetChild(i) != null)
             {
                 Transform subLocation1 = GenerateLocationParent[0].GetChild(i);

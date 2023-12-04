@@ -9,6 +9,7 @@ public class PlayerShootingController : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PlayerPrefabControll playerPrefabControll;
     [SerializeField] private KeyCode shootingKey = KeyCode.None;
+    [SerializeField] private OpenClose openClose;
 
     /*
     [Header("Bullet Properties")]
@@ -40,6 +41,7 @@ public class PlayerShootingController : MonoBehaviour
     private Vector3 targetDirection;
     private Transform placeGunHere;
 
+
     void Start()
     {
         GameObject playerWithGun = GameObject.Find("Player With Gun");
@@ -52,7 +54,7 @@ public class PlayerShootingController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(shootingKey))
+        if (Input.GetKeyDown(shootingKey) && openClose.isAllStateOff())
         {
             shootingOn = !shootingOn;
         }
@@ -75,7 +77,7 @@ public class PlayerShootingController : MonoBehaviour
         { playerController.stopMovement = false; }
         */
 
-        if (Input.GetKey(bulletKey) && Time.time >= nextBulletTime) // Check for bullet cooldown
+        if (Input.GetKey(bulletKey) && Time.time >= nextBulletTime && openClose.isAllStateOff()) // Check for bullet cooldown
         {
             nextBulletTime = Time.time + GunShooting.GetCoolDown();
             //FireBullet();
@@ -84,7 +86,7 @@ public class PlayerShootingController : MonoBehaviour
             placeGunHere.GetChild(playerPrefabControll.getWeaponOnIndex()).GetComponent<AudioSource>().Play();
         }
 
-        if (Input.GetKeyDown(projectileKey) && Time.time >= nextProjectileTime) // Check for projectile cooldown
+        if (Input.GetKeyDown(projectileKey) && Time.time >= nextProjectileTime && openClose.isAllStateOff()) // Check for projectile cooldown
         {
             nextProjectileTime = Time.time + projectileCooldown;
             FireProjectile();
@@ -199,4 +201,5 @@ public class PlayerShootingController : MonoBehaviour
         }
         return Vector3.zero;
     }
+
 }
