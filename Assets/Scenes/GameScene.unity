@@ -9170,17 +9170,12 @@ MonoBehaviour:
   - 120
   - 180
   - 300
-<<<<<<< Updated upstream
   timeBeforeEverything: 0
   timeBeforeWaves: 5
   coinsPerEnemyEliminated: 25
   player: {fileID: 943188000}
   playerBase: {fileID: 2098746646}
   gameEconomyManager: {fileID: 1502225218}
-=======
-  timeBeforeEverything: 60
-  timeBeforeWaves: 0
->>>>>>> Stashed changes
   gameOverUI: {fileID: 2006126226}
   enemyParent: {fileID: 1776222564}
 --- !u!4 &1445448414
