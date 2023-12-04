@@ -4085,6 +4085,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838365692}
   m_CullTransparentMesh: 1
+--- !u!1 &857914334 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2801985374267991173, guid: ee6d76e0da831bd4da7c4fbba73f7946, type: 3}
+  m_PrefabInstance: {fileID: 230548978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &860929913
 GameObject:
   m_ObjectHideFlags: 0
@@ -4827,6 +4832,7 @@ GameObject:
   - component: {fileID: 943188006}
   - component: {fileID: 943188005}
   - component: {fileID: 943188007}
+  - component: {fileID: 943188008}
   m_Layer: 9
   m_Name: Character
   m_TagString: Untagged
@@ -4871,6 +4877,7 @@ MonoBehaviour:
   decelerationTwoType: {x: 0.8, y: 1}
   stopAngle: 5
   playerPrefabControl: {fileID: 943188006}
+  LegMovementController: {fileID: 943188008}
 --- !u!114 &943188003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5052,6 +5059,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &943188008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943188000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0147cee9d490f474cb6307f08d676789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftLegs:
+  - {fileID: 1360313236}
+  - {fileID: 1571283652}
+  rightLegs:
+  - {fileID: 857914334}
+  - {fileID: 2074900121}
+  legSwingAngle: 30
 --- !u!1 &977214458
 GameObject:
   m_ObjectHideFlags: 0
@@ -6407,6 +6433,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308561294}
   m_CullTransparentMesh: 1
+--- !u!1 &1360313236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6437612987142150041, guid: ee6d76e0da831bd4da7c4fbba73f7946, type: 3}
+  m_PrefabInstance: {fileID: 230548978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1407067987
 GameObject:
   m_ObjectHideFlags: 0
@@ -6994,6 +7025,11 @@ CanvasRenderer:
 --- !u!4 &1563885719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4610581845450639669, guid: 58b0d0a2fb0b99b41bf56fdaeaa10907, type: 3}
+  m_PrefabInstance: {fileID: 1086938500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1571283652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6437612987142150041, guid: 58b0d0a2fb0b99b41bf56fdaeaa10907, type: 3}
   m_PrefabInstance: {fileID: 1086938500}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1574900370
@@ -8937,6 +8973,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056111319}
   m_CullTransparentMesh: 1
+--- !u!1 &2074900121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2801985374267991173, guid: 58b0d0a2fb0b99b41bf56fdaeaa10907, type: 3}
+  m_PrefabInstance: {fileID: 1086938500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2089656900
 GameObject:
   m_ObjectHideFlags: 0
@@ -9135,7 +9176,6 @@ MonoBehaviour:
   previewRenderMaterial: {fileID: 2100000, guid: eed4d14a51763c44fba87f63990ce42b, type: 2}
   economyManager: {fileID: 1502225218}
   enemyParent: {fileID: 1776222564}
-  enemyEnemyParent: {fileID: 0}
   PlacementAudio: {fileID: 2092345870}
   DestroyAudio: {fileID: 2092345869}
   RotateAudio: {fileID: 2092345872}

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float stopAngle = 5.0f; // Angle threshold to start moving
 
     public PlayerPrefabControll playerPrefabControl;
+    public LegMovementController LegMovementController;
 
     private Vector3 currentVelocity;
     private Vector3 targetDirection;
@@ -85,5 +86,13 @@ public class PlayerController : MonoBehaviour
 
         // Move the character
         transform.Translate(currentVelocity * Time.deltaTime, Space.World);
+
+        if (isMovingInput)
+        {
+            LegMovementController.SetSpeed(speed);
+        } else
+        {
+            LegMovementController.ResetLegs();
+        }
     }
 }
