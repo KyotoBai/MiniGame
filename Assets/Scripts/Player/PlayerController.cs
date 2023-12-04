@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
         } else
         {
             LegMovementController.ResetLegs();
+            LegMovementController.SetSpeed(0f);
         }
     }
 }

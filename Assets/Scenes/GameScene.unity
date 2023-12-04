@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4449,7 +4449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866631704}
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: -1.7519127, y: 3.9882958, z: -2.1533296}
+  m_LocalPosition: {x: -1.7519126, y: 3.9882958, z: -2.1533294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6534,7 +6534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245611126}
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: -1.7519127, y: 3.9882958, z: -2.1533296}
+  m_LocalPosition: {x: -1.7519126, y: 3.9882958, z: -2.1533294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9591,6 +9591,13 @@ MonoBehaviour:
   DestroyAudio: {fileID: 2092345869}
   RotateAudio: {fileID: 2092345872}
   WrongPlaceAudio: {fileID: 2092345871}
+  placementLayer: 6
+  placementLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  occupiedLayerMask:
+    serializedVersion: 2
+    m_Bits: 4800
 --- !u!82 &2092345869
 AudioSource:
   m_ObjectHideFlags: 0

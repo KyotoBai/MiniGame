@@ -68,6 +68,10 @@ public class PlacementSys : MonoBehaviour
     [SerializeField]
     private AudioSource WrongPlaceAudio;
 
+    [SerializeField] int placementLayer;
+    [SerializeField] private LayerMask placementLayerMask;
+    [SerializeField] private LayerMask occupiedLayerMask;
+
 
     public void StartPlacement(int ID)
     {
@@ -151,7 +155,7 @@ public class PlacementSys : MonoBehaviour
         GameObject newGameObj = Instantiate(database.objData[selectObjIndex].Prefab);
         newGameObj.transform.position = placementHint.transform.position;
         newGameObj.transform.rotation = placementHint.transform.rotation;
-        newGameObj.layer = LayerMask.NameToLayer("PlacementObject");
+        newGameObj.layer = placementLayer;
         BoxCollider newObjectCollider = newGameObj.GetComponentInChildren<BoxCollider>();
         if ( newObjectCollider != null )
         {
@@ -205,7 +209,7 @@ public class PlacementSys : MonoBehaviour
 
         Vector3 colliderCenter = grid.cellSize * 0.49f;
         Vector3 boxSize = grid.cellSize * 0.49f;
-        Collider[] hitColliders = Physics.OverlapBox(cellCenterInWorld, boxSize, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
+        Collider[] hitColliders = Physics.OverlapBox(cellCenterInWorld, boxSize, Quaternion.identity, occupiedLayerMask);
         bool isCellOccupied = hitColliders.Length > 0;
         canPlace = !isCellOccupied;
 
@@ -245,7 +249,7 @@ public class PlacementSys : MonoBehaviour
             if (!canPlace)
             {
                 Vector3 halfExtents = grid.cellSize * 0.4f;
-                // Collider[] hitColliders = Physics.OverlapBox(cellCenterInWorld, halfExtents, Quaternion.identity, LayerMask.GetMask("PlacementObject"));
+                hitColliders = Physics.OverlapBox(cellCenterInWorld, halfExtents, Quaternion.identity, placementLayerMask);
                 foreach (Collider hitCollider in hitColliders)
                 {
                     GameObject parent = hitCollider.gameObject.transform.parent.gameObject;
