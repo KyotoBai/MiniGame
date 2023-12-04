@@ -7458,8 +7458,10 @@ MonoBehaviour:
   - 30
   - 60
   - 120
-  timeBeforeEverything: 0
-  timeBeforeWaves: 10
+  - 180
+  - 300
+  timeBeforeEverything: 60
+  timeBeforeWaves: 60
   gameOverUI: {fileID: 2006126226}
   enemyParent: {fileID: 1776222564}
 --- !u!4 &1445448414
@@ -10884,13 +10886,13 @@ MonoBehaviour:
   speed: 10
   damage: 5
   aoESize: 20
-  maxRange: 0
+  minRange: 0
   enemyParent: {fileID: 1776222564}
   fireInterval: 5
   targetLayers:
     serializedVersion: 2
-    m_Bits: 0
-  bulletOffset: {x: 0, y: 1, z: 0}
+    m_Bits: 128
+  bulletOffset: {x: 0, y: 2, z: 0}
   gunObjectName: none
 --- !u!1 &2112128924
 GameObject:

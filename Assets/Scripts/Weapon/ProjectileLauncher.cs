@@ -9,7 +9,7 @@ public class ProjectileLauncher : MonoBehaviour
     public float speed;
     public int damage;
     public float aoESize;
-    public float maxRange = 0;
+    public float minRange = 0;
     public GameObject enemyParent;
     public float fireInterval;
     public LayerMask targetLayers;
@@ -105,6 +105,9 @@ public class ProjectileLauncher : MonoBehaviour
             if (projectile == null)
             {
                 float distance = Vector3.Distance(transform.position, child.position);
+                if (distance < minRange) {
+                    continue;
+                }
                 if (distance < nearestDistance)
                 {
                     nearestDistance = distance;
