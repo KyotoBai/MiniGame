@@ -20,6 +20,7 @@ public class ProjectileLauncher : MonoBehaviour
 
     private float timeSinceLastFire;
     private GameObject gunObject = null;
+    private bool traceThisTime = false;
 
     void Start()
     {
@@ -75,12 +76,21 @@ public class ProjectileLauncher : MonoBehaviour
             bulletController.aoESize = aoESize;
             bulletController.targetLayers = targetLayers;
             bulletController.projectileHitSound = audioSourceHitProjectile;
-            Vector3 velocity = Vector3.zero;
-            NavMeshAgent navMeshAgent = nearestEnemy.GetComponent<NavMeshAgent>();
-            if (navMeshAgent != null ) {
-                velocity = navMeshAgent.velocity;
+            if (traceThisTime)
+            {
+                Vector3 velocity = Vector3.zero;
+                NavMeshAgent navMeshAgent = nearestEnemy.GetComponent<NavMeshAgent>();
+                if (navMeshAgent != null)
+                {
+                    velocity = navMeshAgent.velocity;
+                }
+                bulletController.targetVelocity = velocity;
             }
-            bulletController.targetVelocity = velocity;
+            else
+            {
+                bulletController.targetVelocity = Vector3.zero;
+            }
+            traceThisTime = !traceThisTime;
 
             if (gunObject != null)
             {
