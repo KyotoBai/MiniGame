@@ -17,6 +17,7 @@ public class GameMechanicsController : MonoBehaviour
     public float waveEndTime = 0f;
     public float waveCountdown;
     public bool waveStarted = false;
+    public int numEnemyEliminated = 0;
 
     [Header("Settings")]
     [SerializeField] private GameObject player;
@@ -25,6 +26,7 @@ public class GameMechanicsController : MonoBehaviour
     [SerializeField] private List<float> waves = new List<float>();
     [SerializeField] private float timeBeforeEverything;
     [SerializeField] private float timeBeforeWaves;
+    [SerializeField] private GameObject gameOverUI;
 
     private Health playerHealth;
     private Health playerBaseHealth;
@@ -32,6 +34,10 @@ public class GameMechanicsController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (gameOverUI != null)
+        {
+            gameOverUI.SetActive(false);
+        }
         if (player != null)
         {
             playerHealth = player.GetComponent<Health>();
@@ -96,5 +102,11 @@ public class GameMechanicsController : MonoBehaviour
     public void GameOver()
     {
         isGameOver = true;
+        gameOverUI?.SetActive(true);
+    }
+
+   public void EnemyEliminated()
+    {
+        numEnemyEliminated += 1;
     }
 }

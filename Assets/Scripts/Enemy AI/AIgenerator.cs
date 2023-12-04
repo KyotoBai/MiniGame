@@ -28,16 +28,17 @@ public class AIGenerator : MonoBehaviour
 
     public float collisionCheckRadius = 1.0f;
     public bool FixedPointGeneration = true;
+    private GameMechanicsController gameMechanicsController = null;
     // Start is called before the first frame update
     void Start()
     {
+        gameMechanicsController = FindObjectOfType<GameMechanicsController>();
         GenerateEnemy();
     }
 
     public void GenerateEnemy()
     {
         int numOfEnemyPlaced = 0;
-       
 
         while (numOfEnemyPlaced < numberOfEnemyToAdd)
         {
@@ -63,6 +64,14 @@ public class AIGenerator : MonoBehaviour
                 newEnemy.transform.GetComponentInChildren<FaceCam>().Cam = HealthBarCamera;
 
                 newEnemy.GetComponent<EnemyMove>().target = target;
+
+                Health healthComponent = newEnemy.GetComponent<Health>();
+
+                if (healthComponent != null && gameMechanicsController != null )
+                {
+                    healthComponent.onHealthDepletedEvent += gameMechanicsController.EnemyEliminated;
+                    Debug.Log("Set EnemyEliminated");
+                }
 
                 numOfEnemyPlaced++;
             }

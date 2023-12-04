@@ -48,12 +48,9 @@ public class Health : MonoBehaviour
             // Only destroy the game object and trigger event if not already done.
             if (gameObject.activeSelf)
             {
-                Destroy(gameObject);
                 // Trigger the event if it has subscribers
-                if (onHealthDepletedEvent != null)
-                {
-                    onHealthDepletedEvent();
-                }
+                onHealthDepletedEvent?.Invoke();
+                Destroy(gameObject);
             }
         }
     }
@@ -91,7 +88,7 @@ public class Health : MonoBehaviour
         TakeDamage(damage);
 
         Vector3 knockbackDirection = new Vector3(attackDirection.x, 0, attackDirection.z).normalized;
-        float upwardForce = knockbackForce * 0.2f;
+        float upwardForce = knockbackForce * 0.1f;
         knockbackDirection = knockbackDirection + Vector3.up * upwardForce;
         knockbackDirection.Normalize();
 
