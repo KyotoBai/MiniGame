@@ -67,7 +67,7 @@ public class StraightLauncher : MonoBehaviour
             BulletController bulletController = bullet.AddComponent<BulletController>();
             bullet.transform.LookAt(nearestEnemy.transform.position);
             bulletController.type = BulletController.BulletType.Straight;
-            Vector3 target = nearestEnemy.transform.position;
+            Vector3 target = new Vector3(nearestEnemy.transform.position.x, nearestEnemy.transform.position.y + 0.7f, nearestEnemy.transform.position.z);
             bulletController.target = target;
             bulletController.speed = speed;
             bulletController.damage = damage;
