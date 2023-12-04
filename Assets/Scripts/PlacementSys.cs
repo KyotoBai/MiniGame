@@ -118,6 +118,11 @@ public class PlacementSys : MonoBehaviour
         levelStep = new Vector3(0, cellSize.x, 0);
         previewRenderCellIndicator = cellIndicator.GetComponentsInChildren<Renderer>();
         aoEHandler = new AoEHandler(LayerMask.GetMask("PlacementObject"));
+        foreach (var objectData in database.objData)
+        {
+            objectData.Inventory = objectData.InitialInventory;
+        }
+
     }
 
     public void StopPlacement()

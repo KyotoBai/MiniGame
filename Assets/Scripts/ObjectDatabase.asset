@@ -18,40 +18,46 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 1, y: 1, z: 1}
     <Prefab>k__BackingField: {fileID: 2134339379701205912, guid: edc4257dea707e94d91aa7defa568b21, type: 3}
     <Price>k__BackingField: 1
+    <InitialInventory>k__BackingField: 30
     <Inventory>k__BackingField: 30
-    <HP>k__BackingField: 15
+    <HP>k__BackingField: 500
   - <Name>k__BackingField: fence_corner_01 [0001]
     <ID>k__BackingField: 1
     <Size>k__BackingField: {x: 1, y: 1, z: 1}
     <Prefab>k__BackingField: {fileID: 3806688328372497252, guid: faae7c583b7f5a74091ca62ec0fd19f5, type: 3}
     <Price>k__BackingField: 1
-    <Inventory>k__BackingField: 5
-    <HP>k__BackingField: 15
+    <InitialInventory>k__BackingField: 10
+    <Inventory>k__BackingField: 10
+    <HP>k__BackingField: 500
   - <Name>k__BackingField: fence_corner_02 [0002]
     <ID>k__BackingField: 2
     <Size>k__BackingField: {x: 1, y: 1, z: 1}
     <Prefab>k__BackingField: {fileID: 3806688328372497252, guid: 1f588a40e4af36842b96c0246526daa4, type: 3}
     <Price>k__BackingField: 1
-    <Inventory>k__BackingField: 5
-    <HP>k__BackingField: 15
+    <InitialInventory>k__BackingField: 0
+    <Inventory>k__BackingField: 0
+    <HP>k__BackingField: 500
   - <Name>k__BackingField: fence_corner_03 [0003]
     <ID>k__BackingField: 3
     <Size>k__BackingField: {x: 1, y: 1, z: 1}
     <Prefab>k__BackingField: {fileID: 3806688328372497252, guid: 067f5a50cef201843b9116187ec03e4c, type: 3}
     <Price>k__BackingField: 1
+    <InitialInventory>k__BackingField: 0
     <Inventory>k__BackingField: 0
-    <HP>k__BackingField: 15
+    <HP>k__BackingField: 500
   - <Name>k__BackingField: fort_1 [1000]
     <ID>k__BackingField: 1000
     <Size>k__BackingField: {x: 1, y: 1, z: 1}
     <Prefab>k__BackingField: {fileID: 4067803455660004270, guid: 6f4eb9cf17e9ab34db83b8fa7836c557, type: 3}
-    <Price>k__BackingField: 15
+    <Price>k__BackingField: 50
+    <InitialInventory>k__BackingField: 3
     <Inventory>k__BackingField: 3
-    <HP>k__BackingField: 100
+    <HP>k__BackingField: 500
   - <Name>k__BackingField: fort_2 [1001]
     <ID>k__BackingField: 1001
     <Size>k__BackingField: {x: 1, y: 1, z: 1}
     <Prefab>k__BackingField: {fileID: 8558144405827383483, guid: d1f6808993de3134f9dffde7d944b9c4, type: 3}
-    <Price>k__BackingField: 5
+    <Price>k__BackingField: 25
+    <InitialInventory>k__BackingField: 3
     <Inventory>k__BackingField: 3
-    <HP>k__BackingField: 100
+    <HP>k__BackingField: 500

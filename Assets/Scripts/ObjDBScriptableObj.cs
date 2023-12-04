@@ -28,6 +28,8 @@ public class ObjectData
     [field: SerializeField]
     public int Price { get; private set; }
     [field: SerializeField]
+    public int InitialInventory { get; set; }
+    [field: SerializeField]
     public int Inventory { get; set; }
     [field: SerializeField]
     public int HP { get; private set; }
