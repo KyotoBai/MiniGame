@@ -4463,7 +4463,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866631704}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &866631707
 Camera:
   m_ObjectHideFlags: 0
@@ -5030,6 +5030,7 @@ GameObject:
   - component: {fileID: 943188005}
   - component: {fileID: 943188007}
   - component: {fileID: 943188008}
+  - component: {fileID: 943188009}
   m_Layer: 9
   m_Name: Character
   m_TagString: Untagged
@@ -5277,6 +5278,14 @@ MonoBehaviour:
   - {fileID: 857914334}
   - {fileID: 2074900121}
   legSwingAngle: 30
+--- !u!81 &943188009
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943188000}
+  m_Enabled: 1
 --- !u!1 &955569219
 GameObject:
   m_ObjectHideFlags: 0
