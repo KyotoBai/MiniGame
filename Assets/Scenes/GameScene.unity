@@ -5459,11 +5459,13 @@ MonoBehaviour:
   playerPrefabControll: {fileID: 943188006}
   shootingKey: 304
   openClose: {fileID: 1031370163}
+  gameEconomyManager: {fileID: 1502225218}
   bulletKey: 32
   projectileSpeed: 5
   projectileDamage: 100
-  projectileAoESize: 5
-  projectileCooldown: 5
+  projectileAoESize: 6
+  projectileCooldown: 10
+  projectilePrice: 50
   projectilePrefab: {fileID: 4663631016596507336, guid: 5db15b8b7ff35ec4cbc5989be721eb2b, type: 3}
   projectileScale: 1
   projectileOffset: {x: 0, y: 0.5, z: 0}
@@ -5483,7 +5485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe21b9265b2b7a4daac68960bf4e458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 100
+  maxHitPoints: 150
   minimumAttackInterval: 1
   currentHitPoints: 0
   useSound: 1
@@ -8372,6 +8374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialCoinsCount: 300
+  coinsCount: 0
 --- !u!4 &1502225219
 Transform:
   m_ObjectHideFlags: 0

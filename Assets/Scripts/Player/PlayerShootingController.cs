@@ -10,6 +10,7 @@ public class PlayerShootingController : MonoBehaviour
     [SerializeField] private PlayerPrefabControll playerPrefabControll;
     [SerializeField] private KeyCode shootingKey = KeyCode.None;
     [SerializeField] private OpenClose openClose;
+    [SerializeField] private GameEconomyManager gameEconomyManager;
 
     /*
     [Header("Bullet Properties")]
@@ -28,6 +29,7 @@ public class PlayerShootingController : MonoBehaviour
     [SerializeField] private int projectileDamage = 100;
     [SerializeField] private float projectileAoESize = 0f;
     [SerializeField] private float projectileCooldown = 2f;
+    [SerializeField] private int projectilePrice = 50;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float projectileScale = 1f;
     [SerializeField] private Vector3 projectileOffset = Vector3.zero;
@@ -135,6 +137,10 @@ public class PlayerShootingController : MonoBehaviour
         GameObject nearestEnemy = FindNearestEnemy();
         if (nearestEnemy != null)
         {
+            if (!gameEconomyManager.SpendCoins(projectilePrice))
+            {
+                return;
+            }
             GameObject projectile = InstantiateBullet(projectilePrefab);
             projectile.transform.position += projectileOffset;
             projectile.transform.localScale = new Vector3(projectileScale, projectileScale, projectileScale);
