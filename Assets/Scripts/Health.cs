@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Health : MonoBehaviour
 {
     [SerializeField] public int maxHitPoints = 10;
     [SerializeField] public float minimumAttackInterval = 0.5f;
+    [SerializeField] private bool destroyAfterDepleted = true;
     public int currentHitPoints;
 
     // Updated event name for clarity
@@ -50,7 +50,13 @@ public class Health : MonoBehaviour
             {
                 // Trigger the event if it has subscribers
                 onHealthDepletedEvent?.Invoke();
-                Destroy(gameObject);
+                if (destroyAfterDepleted)
+                {
+                    Destroy(gameObject);
+                } else
+                {
+                    gameObject.SetActive(false);
+                }
             }
         }
     }

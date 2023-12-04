@@ -510,6 +510,10 @@ PrefabInstance:
       propertyPath: maxHitPoints
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 7791606467222701810, guid: 05fd5525b99370b4f99474baf782fb85, type: 3}
+      propertyPath: destroyAfterDepleted
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8524702101887985847, guid: 05fd5525b99370b4f99474baf782fb85, type: 3}
       propertyPath: m_Layer
       value: 12
@@ -5487,6 +5491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 150
   minimumAttackInterval: 1
+  destroyAfterDepleted: 0
   currentHitPoints: 0
   useSound: 1
   healthBar: {fileID: 1099966336}

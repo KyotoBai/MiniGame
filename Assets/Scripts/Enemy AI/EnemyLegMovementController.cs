@@ -54,7 +54,6 @@ public class EnemyLegMovementController : MonoBehaviour
     public void SetSpeed(float speed)
     {
         moveSpeed = speed * speedFactor;
-        Debug.Log("Move Speed set to " + moveSpeed);
     }
 
     public void SetSpeedFactor(float fact)
