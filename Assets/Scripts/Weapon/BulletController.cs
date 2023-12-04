@@ -20,6 +20,15 @@ public class BulletController : MonoBehaviour
 
     void Start()
     {
+        GameObject parentObject = GameObject.Find("Bullets");
+        if (parentObject != null)
+        {
+            transform.parent = parentObject.transform;
+        }
+        else
+        {
+            Debug.Log("BulletController requires a Bullets parent object.");
+        }
         aoEHandler = new AoEHandler(targetLayers);
         startPosition = transform.position;
 
