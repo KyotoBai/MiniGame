@@ -44,7 +44,7 @@ public class GameMechanicsController : MonoBehaviour
         }
         if (playerBase != null)
         {
-            playerHealth = playerBase.GetComponent<Health>();
+            playerBaseHealth = playerBase.GetComponent<Health>();
         }
         if (playerHealth != null)
         {
