@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitPoints: 100
-  minimumAttackInterval: 0.1
+  minimumAttackInterval: 0
   currentHitPoints: 0
   useSound: 0
   healthBar: {fileID: 8694032016536891424}
@@ -355,7 +355,8 @@ MonoBehaviour:
   leftLegObjectName: Left leg
   rightLegObjectName: Right leg
   legSwingAngle: 30
-  factor: 4
+  swingAngleFactor: 1
+  speedFactor: 2
 --- !u!1 &1636523041872162574
 GameObject:
   m_ObjectHideFlags: 0

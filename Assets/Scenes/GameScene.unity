@@ -508,7 +508,7 @@ PrefabInstance:
       objectReference: {fileID: 1001202647}
     - target: {fileID: 7791606467222701810, guid: 05fd5525b99370b4f99474baf782fb85, type: 3}
       propertyPath: maxHitPoints
-      value: 2000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8524702101887985847, guid: 05fd5525b99370b4f99474baf782fb85, type: 3}
       propertyPath: m_Layer
@@ -11608,9 +11608,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2243427298977743302, guid: 41c6565948be23d4990a59ba5cd32b05, type: 3}
   bulletScale: 5
   speed: 10
-  damage: 5
+  damage: 10
   aoESize: 20
-  minRange: 0
+  minRange: 5
   enemyParent: {fileID: 1776222564}
   fireInterval: 5
   targetLayers:

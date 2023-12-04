@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe21b9265b2b7a4daac68960bf4e458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 10
+  maxHitPoints: 1000
   minimumAttackInterval: 0.5
   currentHitPoints: 0
   useSound: 0
