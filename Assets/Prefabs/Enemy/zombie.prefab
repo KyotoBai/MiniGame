@@ -233,7 +233,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 576
   attackResponseTime: 1
-  attackInterval: 1
+  attackInterval: 0
   damageValue: 10
   detectionDistance: 1
   knockbackForce: 50

@@ -23,6 +23,7 @@ public class GameMechanicsController : MonoBehaviour
     [SerializeField] private GameObject playerBase;
     [SerializeField] private GameEconomyManager gameEconomyManager;
     [SerializeField] private List<float> waves = new List<float>();
+    [SerializeField] private float timeBeforeEverything;
     [SerializeField] private float timeBeforeWaves;
 
     private Health playerHealth;
@@ -48,10 +49,9 @@ public class GameMechanicsController : MonoBehaviour
             playerBaseHealth.onHealthDepletedEvent += GameOver;
         }
         gameBeginTime = Time.time;
-        waveEndTime = Time.time;
+        waveEndTime = Time.time + timeBeforeEverything;
         waveCountdown = timeBeforeWaves;
         waveStarted = false;
-
     }
 
     // Update is called once per frame
