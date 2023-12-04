@@ -89,10 +89,11 @@ public class PlayerController : MonoBehaviour
 
         if (isMovingInput)
         {
+            LegMovementController.SetAngleFactor(Mathf.Abs(currentSpeed)/speed);
             LegMovementController.SetSpeed(speed);
-        } else
+        } /*else
         {
             LegMovementController.ResetLegs();
-        }
+        }*/
     }
 }

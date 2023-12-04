@@ -10,9 +10,11 @@ public class LegMovementController : MonoBehaviour
     [SerializeField] private float legSwingAngle = 30.0f;
 
     private float moveSpeed = 0f;
+    private float factor;
 
     private Quaternion leftLegInitialRotation = Quaternion.identity;
     private Quaternion rightLegInitialRotation = Quaternion.identity;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +30,16 @@ public class LegMovementController : MonoBehaviour
     {
         moveSpeed = speed * 2;
     }
+
+    public void SetAngleFactor(float fact)
+    {
+        factor = fact;
+    }
+
     private void AnimateLegs()
     {
         // Calculate the angle based on moveSpeed and Time.time for a simple swinging motion
-        float angle = Mathf.Sin(Time.time * moveSpeed) * legSwingAngle;
+        float angle = Mathf.Sin(Time.time * moveSpeed) * legSwingAngle * factor;
 
         // Apply rotation to the legs
         foreach ( GameObject leftLeg in leftLegs )

@@ -88,7 +88,7 @@ public class Health : MonoBehaviour
         TakeDamage(damage);
 
         Vector3 knockbackDirection = new Vector3(attackDirection.x, 0, attackDirection.z).normalized;
-        float upwardForce = knockbackForce * 0.1f;
+        float upwardForce = knockbackForce * 0.01f;
         knockbackDirection = knockbackDirection + Vector3.up * upwardForce;
         knockbackDirection.Normalize();
 
