@@ -58,9 +58,6 @@ public class PlacementSys : MonoBehaviour
     [SerializeField]
     private GameObject enemyParent = null;
 
-    [SerializeField]
-    private GameObject enemyEnemyParent = null;
-
     [Header("Sound file")]
     [SerializeField]
     private AudioSource PlacementAudio;
