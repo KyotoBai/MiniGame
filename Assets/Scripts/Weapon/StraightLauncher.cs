@@ -15,6 +15,7 @@ public class StraightLauncher : MonoBehaviour
     public LayerMask targetLayers;
     public Vector3 bulletOffset;
     public string gunObjectName;
+    public AudioSource audioSource;
 
     private float timeSinceLastFire;
     private GameObject gunObject = null;
@@ -44,6 +45,7 @@ public class StraightLauncher : MonoBehaviour
                 if (enemyParent != null)
                 {
                     FireStraight();
+                    
                     timeSinceLastFire = 0f;
                 }
                 else
@@ -74,6 +76,7 @@ public class StraightLauncher : MonoBehaviour
             bulletController.aoESize = aoESize;
             bulletController.targetLayers = targetLayers;
             bulletController.targetVelocity = velocity;
+            audioSource.Play();
 
             if (gunObject != null)
             {
