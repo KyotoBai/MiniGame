@@ -29,5 +29,5 @@ public class WaveData
     public float Radius { get; private set; }
     
     [field: SerializeField]
-    public GameObject[] ememyPrefabs { get; private set; }
+    public GameObject ememyPrefabs { get; private set; }
 }

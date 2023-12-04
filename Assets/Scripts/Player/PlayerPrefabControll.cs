@@ -12,6 +12,8 @@ public class PlayerPrefabControll : MonoBehaviour
     private PlayerShootingController shootingController;
     [SerializeField]
     private PlayerController playerController;
+    [SerializeField]
+    private OpenClose openClose;
 
     private bool[] weaponStatus;
     private int gunIndexTrue = 0; //record the current gun type that is active
@@ -46,19 +48,19 @@ public class PlayerPrefabControll : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(true);
 
-            if (Input.GetKey(KeyCode.Alpha1))
+            if (Input.GetKey(KeyCode.Alpha1) && openClose.isAllStateOff())
             {
                 gunIndexTrue = 0;
             }
-            else if (Input.GetKey(KeyCode.Alpha2))
+            else if (Input.GetKey(KeyCode.Alpha2) && openClose.isAllStateOff())
             {
                 gunIndexTrue = 1;
             }
-            else if (Input.GetKey(KeyCode.Alpha3))
+            else if (Input.GetKey(KeyCode.Alpha3) && openClose.isAllStateOff())
             {
                 gunIndexTrue = 2;
             }
-            else if (Input.GetKey(KeyCode.Alpha4))
+            else if (Input.GetKey(KeyCode.Alpha4) && openClose.isAllStateOff())
             {
                 gunIndexTrue = 3;
             }
