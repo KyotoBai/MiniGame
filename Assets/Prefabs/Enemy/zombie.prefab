@@ -151,7 +151,7 @@ NavMeshAgent:
   m_Speed: 2
   m_Acceleration: 2.5
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 720
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -174,6 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 100
   minimumAttackInterval: 0
+  destroyAfterDepleted: 1
   currentHitPoints: 0
   useSound: 0
   healthBar: {fileID: 8694032016536891424}
@@ -357,6 +358,7 @@ MonoBehaviour:
   legSwingAngle: 30
   swingAngleFactor: 1
   speedFactor: 2
+  current_speed: 0
 --- !u!1 &1636523041872162574
 GameObject:
   m_ObjectHideFlags: 0

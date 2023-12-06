@@ -9171,7 +9171,7 @@ MonoBehaviour:
   - 180
   - 300
   timeBeforeEverything: 0
-  timeBeforeWaves: 5
+  timeBeforeWaves: 0
   coinsPerEnemyEliminated: 25
   player: {fileID: 943188000}
   playerBase: {fileID: 2098746646}

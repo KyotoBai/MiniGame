@@ -21,6 +21,7 @@ public class EnemyMove : MonoBehaviour
         while (true)
         {
             UpdatePathToTarget();
+            //transform.gameObject.GetComponent<EnemyLegMovementController>().AnimateLegs();
             yield return new WaitForSeconds(pathUpdateInterval);
         }
     }

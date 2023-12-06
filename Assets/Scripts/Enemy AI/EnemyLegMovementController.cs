@@ -20,6 +20,8 @@ public class EnemyLegMovementController : MonoBehaviour
     private Quaternion leftLegInitialRotation = Quaternion.identity;
     private Quaternion rightLegInitialRotation = Quaternion.identity;
 
+    public float current_speed = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,18 +44,20 @@ public class EnemyLegMovementController : MonoBehaviour
     }
 
     // Update is called once per frame
+   
     void Update()
     {
+        
         if (navMeshAgent != null)
         {
-            SetSpeed(navMeshAgent.velocity.magnitude);
+            SetSpeed(navMeshAgent.speed);
         }
         AnimateLegs();
     }
 
     public void SetSpeed(float speed)
     {
-        moveSpeed = speed * speedFactor;
+        moveSpeed = speed;
     }
 
     public void SetSpeedFactor(float fact)
@@ -66,10 +70,11 @@ public class EnemyLegMovementController : MonoBehaviour
         swingAngleFactor = fact;
     }
 
-    private void AnimateLegs()
+    public void AnimateLegs()
     {
+       
         // Calculate the angle based on moveSpeed and Time.time for a simple swinging motion
-        float angle = Mathf.Sin(Time.time * moveSpeed) * legSwingAngle * swingAngleFactor;
+        float angle = Mathf.Sin(Time.time * moveSpeed) * legSwingAngle * (navMeshAgent.velocity.magnitude/navMeshAgent.speed);
 
         // Apply rotation to the legs
         if (leftLeg != null)
